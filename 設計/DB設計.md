@@ -1,15 +1,19 @@
+# DB設計
+
 ### users
-| user_id (PK) | INT |
-|--------------|--------------|
+| フィールド名 | 型 |
+|---------------|--------------|
+| user_id (PK)  | INT          |
 | user_name     | VARCHAR(20)  |
 | user_password | VARCHAR(20)  |
 | user_isadmin  | BOOLEAN      |
 
 ### results
-| result_id (PK) | INT |
-|--------------|--------------|
-| user_id (FK)     | VARCHAR(20)  |
-| result_code | TINYINT  |
+| フィールド名 | 型 |
+|----------------|---------|
+| result_id (PK) | INT     |
+| user_id (FK)   | INT     |
+| result_code    | TINYINT |
 
 ---
 **補足**
