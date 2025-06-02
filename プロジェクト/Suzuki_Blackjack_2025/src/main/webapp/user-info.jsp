@@ -15,11 +15,12 @@
 		<form action="MainMenuController" method="get" align="right">
 			<input type="submit" value="ログアウト">[ログイン中のユーザー表示]
 		</form>
-		<hr>
 	</header>
+	<hr>
 	<h1>ユーザー情報</h1>
 	<div class="row">
 		<div class="col-8">
+			<!--XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
 			<!--左側の要素-->
 			<h2>あなたの戦績</h2>
 			<table>
@@ -43,11 +44,12 @@
 				</tbody>
 			</table>
 			<form action="UserInfoController" method="post">
-			<input type="submit" value="アカウント設定へ">
-		</form>
+				<input type="submit" value="アカウント設定へ">
+			</form>
 		</div>
-		
+
 		<div class="col-4">
+			<!--XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
 			<!--右側の要素-->
 			<h2>勝率ランキング</h2>
 			<table>

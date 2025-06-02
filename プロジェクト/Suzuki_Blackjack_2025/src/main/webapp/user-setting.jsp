@@ -14,35 +14,36 @@
 
 <dl ckass="row">
   <dt class="col-sm-3">
- 	<label for="inputUserName">新しいユーザー名</label>
+ 	<label for="inputUserName">ユーザー名</label>
   </dt>
   <dd class="col-sm-9">
- 	<input type="text" id="inputUserName" name="userName">
+ 	<input type="text" id="inputUserName" name="userName" value=""<% // 現在設定されているusername %>>
   </dd>
   
   
   <dt class="col-sm-3">
-  	<label for="inputUserPassword">現パスワード</label>
+  	<label for="inputUserPassword">パスワード</label>
   </dt>
   <dd class="col-sm-9">
   	<input type="password" id="inputUserPassword" name="userPassword">
   </dd>
   
   
-  <dt class="col-sm-3">
-  	<label for="inputNewUserPassword">新しいパスワード</label>
-  <dd class="col-sm-9">
-  	<input type="password" id="inputNewUserPassword" name="newUserPassword">
-  </dd>
+<!--  <dt class="col-sm-3">-->
+<!--  	<label for="inputNewUserPassword">新しいパスワード</label>-->
+<!--  <dd class="col-sm-9">-->
+<!--  	<input type="password" id="inputNewUserPassword" name="newUserPassword1">-->
+<!--  </dd>-->
   
   
-  <dt class="col-sm-3">
-  	<label for="configureInputUserPassword">新しいパスワード(確認)</label>
-  </dt>
-  <dd class="col-sm-9">
-  	<input type="password" id="configureInputUserPassword" name="configureInputUserPassword">
-  </dd>
-  
+<!--  <dt class="col-sm-3">-->
+<!--  	<label for="configureInputUserPassword">新しいパスワード(確認)</label>-->
+<!--  </dt>-->
+<!--  <dd class="col-sm-9">-->
+<!--  	<input type="password" id="configureInputUserPassword" name="newUserPassword2">-->
+<!--  </dd>-->
+
+  <input type="submit" value="更新">
   </form>
 </dl>
 
