@@ -36,13 +36,32 @@ public class UserDAO {
 			DatabaseUtil.close(rs, ps, con);
 			System.out.println("DB切断@UserDAO/getUserByNameAndPassword");
 		}
-		
 		return user;		
 	}
 	
 	// 同じユーザー名が存在しないかをチェックする
 	public boolean userNameValidator(String name) {
-		return true;
+		boolean flag = false;
+		System.out.println("DB接続@UserDAO/userNameValidator");
+		try {
+			con = DatabaseUtil.getConnection();
+			String sql = "SELECT * FROM users WHERE user_name = ?";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, name);
+			rs = ps.executeQuery();
+			flag = rs.next();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DatabaseUtil.close(rs, ps, con);
+			System.out.println("DB切断@UserDAO/userNameValidator");
+		}
+		
+		
+		
+		
+		// true: 同じユーザー名が存在する
+		return flag;
 	}
 	
 	// user_nameとuser_passwordからusersにレコードを作成
