@@ -15,6 +15,45 @@
 | user_id (FK)   | INT     |
 | result_code    | TINYINT |
 
+## SQL文
+```SQL
+-- 実行コード
+CREATE TABLE users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_name VARCHAR(20) NOT NULL,
+    user_password VARCHAR(20) NOT NULL,
+    user_isadmin BOOLEAN NOT NULL DEFAULT FALSE
+);
+
+CREATE TABLE results (
+    result_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    result_code TINYINT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+);
+
+-- 実行結果
+MariaDB [blackjack]> SHOW COLUMNS FROM users;
++---------------+-------------+------+-----+---------+----------------+
+| Field         | Type        | Null | Key | Default | Extra          |
++---------------+-------------+------+-----+---------+----------------+
+| user_id       | int(11)     | NO   | PRI | NULL    | auto_increment |
+| user_name     | varchar(20) | NO   |     | NULL    |                |
+| user_password | varchar(20) | NO   |     | NULL    |                |
+| user_isadmin  | tinyint(1)  | NO   |     | 0       |                |
++---------------+-------------+------+-----+---------+----------------+
+4 rows in set (0.016 sec)
+
+MariaDB [blackjack]> SHOW COLUMNS FROM results;
++-------------+------------+------+-----+---------+----------------+
+| Field       | Type       | Null | Key | Default | Extra          |
++-------------+------------+------+-----+---------+----------------+
+| result_id   | int(11)    | NO   | PRI | NULL    | auto_increment |
+| user_id     | int(11)    | NO   | MUL | NULL    |                |
+| result_code | tinyint(4) | NO   |     | NULL    |                |
++-------------+------------+------+-----+---------+----------------+
+3 rows in set (0.009 sec)
+```
 ---
 **補足**
 user_isadminの値は、そのレコードに該当するユーザーが
