@@ -7,6 +7,10 @@
 | user_name     | VARCHAR(20)  |
 | user_password | VARCHAR(20)  |
 | user_isadmin  | BOOLEAN      |
+| user_wincount | INT          |
+| user_losecount| INT          |
+| user_drawcount| INT          |
+| user_winrate  | FROAT        |
 
 ### results テーブル
 | フィールド名 | 型 |
@@ -22,7 +26,10 @@ CREATE TABLE users (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     user_name VARCHAR(20) NOT NULL,
     user_password VARCHAR(20) NOT NULL,
-    user_isadmin BOOLEAN NOT NULL DEFAULT FALSE
+    user_isadmin BOOLEAN NOT NULL DEFAULT FALSE,
+    user_wincount INT NOT NULL,
+    user_losecount INT NOT NULL,
+    user_drawcount INT NOT NULL
 );
 
 CREATE TABLE results (
@@ -34,15 +41,18 @@ CREATE TABLE results (
 
 -- 実行結果
 MariaDB [blackjack]> SHOW COLUMNS FROM users;
-+---------------+-------------+------+-----+---------+----------------+
-| Field         | Type        | Null | Key | Default | Extra          |
-+---------------+-------------+------+-----+---------+----------------+
-| user_id       | int(11)     | NO   | PRI | NULL    | auto_increment |
-| user_name     | varchar(20) | NO   |     | NULL    |                |
-| user_password | varchar(20) | NO   |     | NULL    |                |
-| user_isadmin  | tinyint(1)  | NO   |     | 0       |                |
-+---------------+-------------+------+-----+---------+----------------+
-4 rows in set (0.016 sec)
++----------------+-------------+------+-----+---------+----------------+
+| Field          | Type        | Null | Key | Default | Extra          |
++----------------+-------------+------+-----+---------+----------------+
+| user_id        | int(11)     | NO   | PRI | NULL    | auto_increment |
+| user_name      | varchar(20) | NO   |     | NULL    |                |
+| user_password  | varchar(20) | NO   |     | NULL    |                |
+| user_isadmin   | tinyint(1)  | NO   |     | 0       |                |
+| user_wincount  | int(11)     | NO   |     | NULL    |                |
+| user_losecount | int(11)     | NO   |     | NULL    |                |
+| user_drawcount | int(11)     | NO   |     | NULL    |                |
++----------------+-------------+------+-----+---------+----------------+
+7 rows in set (0.015 sec)
 
 MariaDB [blackjack]> SHOW COLUMNS FROM results;
 +-------------+------------+------+-----+---------+----------------+
@@ -52,7 +62,7 @@ MariaDB [blackjack]> SHOW COLUMNS FROM results;
 | user_id     | int(11)    | NO   | MUL | NULL    |                |
 | result_code | tinyint(4) | NO   |     | NULL    |                |
 +-------------+------------+------+-----+---------+----------------+
-3 rows in set (0.009 sec)
+3 rows in set (0.007 sec)
 ```
 ---
 **補足**
@@ -70,6 +80,7 @@ result_codeの値は、そのレコードが示す勝負結果が
 
 
 ### 更新履歴
+2025/06/03 v1.3 鈴木 usersの設計を変更
 2205/06/02 v1.2 鈴木 データベース名を追加 テーブル/データベースを明記
 2025/05/30 v1.1 鈴木 usersの権限管理が定義されていなかった点を修正
 2025/05/30 v1.0 鈴木 初版作成
