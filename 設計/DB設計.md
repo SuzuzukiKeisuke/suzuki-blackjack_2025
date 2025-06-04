@@ -10,7 +10,6 @@
 | user_wincount | INT          |
 | user_losecount| INT          |
 | user_drawcount| INT          |
-| user_winrate  | FROAT        |
 
 ### results テーブル
 | フィールド名 | 型 |
@@ -27,9 +26,9 @@ CREATE TABLE users (
     user_name VARCHAR(20) NOT NULL,
     user_password VARCHAR(20) NOT NULL,
     user_isadmin BOOLEAN NOT NULL DEFAULT FALSE,
-    user_wincount INT NOT NULL,
-    user_losecount INT NOT NULL,
-    user_drawcount INT NOT NULL
+    user_wincount INT NOT NULL DEFAULT 0,
+    user_losecount INT NOT NULL DEFAULT 0,
+    user_drawcount INT NOT NULL DEFAULT 0
 );
 
 CREATE TABLE results (
@@ -48,9 +47,9 @@ MariaDB [blackjack]> SHOW COLUMNS FROM users;
 | user_name      | varchar(20) | NO   |     | NULL    |                |
 | user_password  | varchar(20) | NO   |     | NULL    |                |
 | user_isadmin   | tinyint(1)  | NO   |     | 0       |                |
-| user_wincount  | int(11)     | NO   |     | NULL    |                |
-| user_losecount | int(11)     | NO   |     | NULL    |                |
-| user_drawcount | int(11)     | NO   |     | NULL    |                |
+| user_wincount  | int(11)     | NO   |     | 0       |                |
+| user_losecount | int(11)     | NO   |     | 0       |                |
+| user_drawcount | int(11)     | NO   |     | 0       |                |
 +----------------+-------------+------+-----+---------+----------------+
 7 rows in set (0.015 sec)
 
