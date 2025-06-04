@@ -3,6 +3,7 @@ package util;
 import model.dto.UserAccountDTO;
 import model.dto.UserInfoDTO;
 import model.entity.User;
+import model.entity.UserStats;
 
 public class UserConverter {
 	 // User
@@ -17,8 +18,12 @@ public class UserConverter {
 	}
 	
 	
-	public static UserInfoDTO toUserInfoDTO(User user) {
-		// あとでつくる
-		return null;
+	public static UserInfoDTO toUserInfoDTO(UserStats stats) {
+		return new UserInfoDTO(
+						stats.getUserId(),
+						stats.getUserName(),
+						stats.getWinCount(),
+						stats.getLoseCount(),
+						stats.getDrawCount());
 	}
 }
