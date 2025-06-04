@@ -1,5 +1,6 @@
 <%@ page import="model.dto.UserAccountDTO" %>
 <%@ page import="model.dto.UserInfoDTO" %>
+<%@ page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -46,11 +47,11 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td>すずき</td>
-						<td>15</td>
-						<td>5</td>
-						<td>0</td>
-						<td>75.0%</td>
+						<td><%=userInfo.getUserName() %></td>
+						<td><%=userInfo.getWinCount() %></td>
+						<td><%=userinfo.getLoseCount() %></td>
+						<td><%=userInfo.getDrawCount() %></td>
+						<td><%=userInfo.getWinRate() %></td>
 					</tr>
 				</tbody>
 			</table>

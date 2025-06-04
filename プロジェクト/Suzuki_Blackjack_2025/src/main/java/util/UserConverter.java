@@ -13,7 +13,7 @@ public class UserConverter {
 		return new UserAccountDTO(
 						user.getUserId(),
 						user.getUserName(),
-						user.getUserPassword(),
+//						user.getUserPassword(),
 						user.isUserIsAdmin());
 	}
 	

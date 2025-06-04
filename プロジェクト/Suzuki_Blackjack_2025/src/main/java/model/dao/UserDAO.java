@@ -32,7 +32,7 @@ public class UserDAO {
 				user = new User();
 				user.setUserId(rs.getInt("user_id"));
 				user.setUserName(rs.getString("user_name"));
-				user.setUserPassword(rs.getString("user_password"));
+//				user.setUserPassword(rs.getString("user_password"));
 				user.setUserIsAdmin(rs.getBoolean("user_isadmin"));
 			}
 		} catch (SQLException e) {
@@ -57,7 +57,7 @@ public class UserDAO {
 				while(rs.next()) {
 					user.setUserId(rs.getInt("user_id"));
 					user.setUserName(rs.getString("user_name"));
-					user.setUserPassword(rs.getString("user_password"));
+//					user.setUserPassword(rs.getString("user_password"));
 					user.setUserIsAdmin(rs.getBoolean("user_isadmin"));
 				}
 			} catch (SQLException e) {
@@ -82,7 +82,7 @@ public class UserDAO {
 			while(rs.next()) {
 				user.setUserId(rs.getInt("user_id"));
 				user.setUserName(rs.getString("user_name"));
-				user.setUserPassword(rs.getString("user_password"));
+//				user.setUserPassword(rs.getString("user_password"));
 				user.setUserIsAdmin(rs.getBoolean("user_isadmin"));
 				userList.add(user);
 			}
@@ -202,7 +202,9 @@ public class UserDAO {
 				case 2:
 					sql = "UPDATE users SET user_drawcount = user_drawcount + 1 WHERE user_id = ?";
 					break;
-					
+				default:
+					System.out.println("UserDAO/result/resultCodeエラー 0~2以外の数値 -> " + result.getResultCode());
+					return 0;
 			}
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, result.getUserId());

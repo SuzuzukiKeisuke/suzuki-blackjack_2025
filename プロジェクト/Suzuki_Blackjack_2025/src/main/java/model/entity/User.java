@@ -3,7 +3,7 @@ package model.entity;
 public class User {
 	private int userId;
 	private String userName;
-	private String userPassword;
+	// private String userPassword;
 	private boolean userIsAdmin;
 	
 	public User() {}
@@ -11,7 +11,7 @@ public class User {
 	public User(int userId, String userName, String userPassword, boolean userIsAdmin) {
 		this.userId = userId;
 		this.userName = userName;
-		this.userPassword = userPassword;
+		// this.userPassword = userPassword;
 		this.userIsAdmin = userIsAdmin;
 	}
 
@@ -31,13 +31,13 @@ public class User {
 		this.userName = userName;
 	}
 
-	public String getUserPassword() {
-		return userPassword;
-	}
-
-	public void setUserPassword(String userPassword) {
-		this.userPassword = userPassword;
-	}
+//	public String getUserPassword() {
+//		return userPassword;
+//	}
+//
+//	public void setUserPassword(String userPassword) {
+//		this.userPassword = userPassword;
+//	}
 
 	public boolean isUserIsAdmin() {
 		return userIsAdmin;

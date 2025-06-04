@@ -15,8 +15,7 @@ public class UserInfoDTO {
 		this.loseCount = loseCount;
 		this.drawCount = drawCount;
 		int total = winCount + loseCount + drawCount;
-		winRate = (total == 0 ? 0 : ((float)winCount / total * 100));
-		this.winRate = (float)winCount / (winCount + loseCount + drawCount) * 100;
+		this.winRate = (total == 0 ? 0 : ((float)winCount / total * 100));
 		
 	}
 
