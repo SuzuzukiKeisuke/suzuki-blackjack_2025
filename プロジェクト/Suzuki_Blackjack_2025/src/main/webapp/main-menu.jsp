@@ -1,3 +1,4 @@
+<%@ page import="model.dto.UserAccountDTO" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -8,10 +9,12 @@
 <title>メインメニュー</title>
 </head>
 <body>
-<% // ログイン中のユーザー名を取得 %>
+<%
+	UserAccountDTO loginUser = (UserAccountDTO)session.getAttribute("loginUser"); 
+%>
 <header>
 	<form action="MainMenuController" method="get" align="right">
-		<input type="submit" value="ログアウト">[ログイン中のユーザー表示]
+		<input type="submit" value="ログアウト"><%= loginUser.getUserName()%>
 	</form>
 	<hr>
 </header>
@@ -22,7 +25,7 @@
 <form action="MainMenuController" method="post">
 	<input type="submit" value="ユーザー情報">
 </form>
-<% if( /*ログイン中のアカウントが管理者権限を持っていたら*/true ){ %>
+<% if(loginUser.isUserIsAdmin()){ %>
 	<form action="AdminMenuController" method="post">
 		<input type="submit" value="管理者メニュー">
 	</form>

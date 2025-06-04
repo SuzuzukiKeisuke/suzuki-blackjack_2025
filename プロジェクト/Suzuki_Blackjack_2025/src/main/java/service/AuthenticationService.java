@@ -11,7 +11,7 @@ public class AuthenticationService {
 	UserDAO uDAO = new UserDAO();
 	
 	// ログイン認証
-	UserAccountDTO loginAuth(String name, String password) {
+	public UserAccountDTO loginAuth(String name, String password) {
 
 		// dbからアカウント情報を取得
 		User user = uDAO.getUserByNameAndPassword(name, password);
@@ -26,7 +26,7 @@ public class AuthenticationService {
 	
 	
 	// サインアップ
-	UserAccountDTO signUpAuth(String name, String password) {
+	public UserAccountDTO signUpAuth(String name, String password) {
 		
 		// ユーザ名の妥当性を調査
 		// TRUE  -> 使用できる

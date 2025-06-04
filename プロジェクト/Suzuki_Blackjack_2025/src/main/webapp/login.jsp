@@ -17,10 +17,20 @@
 <!--		要素全体を中央揃え-->
 			<div class="text-start">
 <!--			テキストを左揃え-->
+
+<%
+	String message = (String)request.getAttribute("message");
+	if(message!=null){
+%>
+		<p><%= message %></p>
+<%		
+	}
+
+%>
 	<form action="LoginController" method="post">
 		
 				<label for=inputUserName>ユーザー名</label></br>
-				<input type="text" id="inputUserName" name="userId" class="mb-3" required></br>
+				<input type="text" id="inputUserName" name="userName" class="mb-3" required></br>
 				<labal for="inputUserPassword">パスワード</labal></br> 
 				<input type="password" id="inputPassword" name="userPassword" class="mb-3" required></br> 
 				<input type="submit" value="ログイン"class="btn btn-primary mb-3">

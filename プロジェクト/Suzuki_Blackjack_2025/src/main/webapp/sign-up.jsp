@@ -12,7 +12,7 @@
 	<h2>新規ユーザー登録</h2>
 	<form action="SignInController" method="post">
 		<label for=inputUserName>ユーザー名</label></br>
-		<input type="text" id="inputUserName" name="userId" required></br>
+		<input type="text" id="inputUserName" name="userName" required></br>
 		<labal for="inputUserPassword">パスワード</labal></br>
 		<input type	="password" id="inputPassword" name="userPassword" required></br>
 		<input type="submit" value="新規登録">

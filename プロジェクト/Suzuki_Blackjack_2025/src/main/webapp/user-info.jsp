@@ -1,3 +1,5 @@
+<%@ page import="model.dto.UserAccountDTO" %>
+<%@ page import="model.dto.UserInfoDTO" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,9 +13,12 @@
 <title>ユーザー情報</title>
 </head>
 <body>
+<%
+	UserAccountDTO loginUser = (UserAccountDTO)session.getAttribute("loginUser"); 
+%>
 	<header>
 		<form action="MainMenuController" method="get" align="right">
-			<input type="submit" value="ログアウト">[ログイン中のユーザー表示]
+			<input type="submit" value="ログアウト"><%=loginUser.getUserName() %>
 		</form>
 	</header>
 	<hr>
@@ -22,10 +27,16 @@
 		<div class="col-8">
 			<!--XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
 			<!--左側の要素-->
+			<%	// コントローラからオブジェクトを受け取る
+				UserInfoDTO userInfo = request.getAttribute("userInfo");
+				List<UserInfoDTO> userRanking = request.getAttribute("userRanking");
+			%>
+			
 			<h2>あなたの戦績</h2>
 			<table>
 				<thead>
 					<tr>
+					<!-- 2025/06/04 夕会後 ここから実装 -->
 						<th>ユーザー名</th>
 						<th>勝ち</th>
 						<th>負け</th>

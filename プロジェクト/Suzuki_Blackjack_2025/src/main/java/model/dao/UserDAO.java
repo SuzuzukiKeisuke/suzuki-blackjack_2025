@@ -19,7 +19,7 @@ public class UserDAO {
 	
 	// user_nameとuser_passwordを参照してレコードを検索
 	public User getUserByNameAndPassword(String name, String password) {
-		User user = new User();
+		User user = null;
 		System.out.println("DB接続@UserDAO/getUserByNameAndPassword");
 		try {
 			con = DatabaseUtil.getConnection();
@@ -29,6 +29,7 @@ public class UserDAO {
 			ps.setString(2, password);
 			rs = ps.executeQuery();
 			while(rs.next()) {
+				user = new User();
 				user.setUserId(rs.getInt("user_id"));
 				user.setUserName(rs.getString("user_name"));
 				user.setUserPassword(rs.getString("user_password"));
@@ -218,7 +219,7 @@ public class UserDAO {
 		
 		// 勝率トップ5を取得する
 		public List<UserStats> getUserStatsList(){
-			UserStats userstats = new UserStats();
+			UserStats userstats = null;
 			List<UserStats> userStatsList = new ArrayList<UserStats>();
 			System.out.println("DB接続@UserDAO/getUserStatsList");
 			try {
@@ -227,6 +228,7 @@ public class UserDAO {
 				ps = con.prepareStatement(sql);
 				rs = ps.executeQuery();
 				while(rs.next()) {
+					userstats = new UserStats();
 					userstats.setUserId(rs.getInt("user_id"));
 					userstats.setUserName(rs.getString("user_name"));
 					userstats.setWinCount(rs.getInt("user_wincount"));
@@ -242,4 +244,31 @@ public class UserDAO {
 			}
 			return userStatsList;
 		}
+		
+		// idからuserstatsを取得する
+				public UserStats getUserStatsById(int userId){
+					UserStats userStats = null;
+					System.out.println("DB接続@UserDAO/getUserStatsById");
+					try {
+						con = DatabaseUtil.getConnection();
+						String sql = "SELECT * FROM users WHERE user_id = ?";
+						ps = con.prepareStatement(sql);
+						ps.setInt(1, userId);
+						rs = ps.executeQuery();
+						while(rs.next()) {
+							userStats = new UserStats();
+							userStats.setUserId(rs.getInt("user_id"));
+							userStats.setUserName(rs.getString("user_name"));
+							userStats.setWinCount(rs.getInt("user_wincount"));
+							userStats.setLoseCount(rs.getInt("user_losecount"));
+							userStats.setDrawCount(rs.getInt("user_drawcount"));
+						}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					} finally {
+						DatabaseUtil.close(rs, ps, con);
+						System.out.println("DB切断@UserDAO/getUserStatsById");
+					}
+					return userStats;
+				}
 }

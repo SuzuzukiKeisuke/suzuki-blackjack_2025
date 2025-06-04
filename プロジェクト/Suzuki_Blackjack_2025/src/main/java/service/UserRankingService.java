@@ -9,6 +9,15 @@ import model.entity.UserStats;
 import util.UserConverter;
 
 public class UserRankingService {
+	
+	public UserInfoDTO getUserInfo(int userId) {
+		// dbアクセス
+		UserDAO uDAO = new UserDAO();
+		return UserConverter.toUserInfoDTO(uDAO.getUserStatsById(userId));
+		
+	}
+	
+	
 	public List<UserInfoDTO> getUserRanking(){
 		// usersテーブルのDAO
 		UserDAO uDAO = new UserDAO();
