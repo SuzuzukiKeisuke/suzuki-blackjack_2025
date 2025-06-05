@@ -1,3 +1,4 @@
+<%@ page import="model.dto.UserAccountDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,34 +12,41 @@
 <title>管理者画面-アカウント設定</title>
 </head>
 <body>
+	<%
+	UserAccountDTO loginUser = (UserAccountDTO) session.getAttribute("loginUser");
+	UserAccountDTO user = (UserAccountDTO) request.getAttribute("user");
+	%>
+	<header>
+		<form action="MainMenuController" method="get" align="right">
+			<input type="submit" value="ログアウト"><%=loginUser.getUserName()%>
+		</form>
+	</header>
+
 	<h1>管理者-アカウント設定</h1>
-	<dl ckass="row">
-	<form action="AdminSettingController" method="post">
-		<input type="hidden" name="役割" value="更新">
-		<dt class="col-sm-3">
-			<label for="inputUserName">ユーザー名</label>
-		</dt>
-		<dd class="col-sm-9">
-			<input type="text" id="inputUserName" name="userName" value="">
-				<%// 現在設定されているusername%>
-		</dd>
-
-
-		<dt class="col-sm-3">
-			<label for="inputUserPassword">パスワード</label>
-		</dt>
-		<dd class="col-sm-9">
-			<input type="password" id="inputUserPassword" name="userPassword">
-		</dd>
-
-		
-		<input type="submit" value="更新"  class="btn btn-primary">
+	<dl class="row">
+		<form action="AdminSettingController" method="post">
+			<dl class="row">
+				<dt class="col-sm-3">
+					<label for="inputUserName" required>新しいユーザー名</label>
+				</dt>
+				<dd class="col-sm-9">
+					<input type="text" id="inputUserName" name="newUserName"
+						value=<%=user.getUserName()%> required> <input
+						type="hidden" name="userName" value=<%=user.getUserName()%>
+				</dd>
+				<dt class="col-sm-3">
+					<label for="inputUserPassword">パスワード</label>
+				</dt>
+				<dd class="col-sm-9">
+					<input type="password" id="inputUserPassword" name="userPassword">
+				</dd>
+			</dl>
+			<input type="submit" class="btn btn-primary" value="更新">
 		</form>
-		
-		<form action="AdinSettingController" method="post">
-			<input type="hidden" name="役割" value="削除">
-			<input type="submit" value="削除" class="btn btn-danger">
+		<form action="UserSettingController" method="get">
+			<input type="submit" class="btn btn-light" value="戻る">
 		</form>
+		<hr>
 	</dl>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

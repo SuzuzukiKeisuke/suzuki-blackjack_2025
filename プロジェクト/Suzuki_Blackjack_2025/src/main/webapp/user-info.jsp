@@ -29,16 +29,19 @@
 			<!--XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
 			<!--左側の要素-->
 			<%	// コントローラからオブジェクトを受け取る
-				UserInfoDTO userInfo = request.getAttribute("userInfo");
-				List<UserInfoDTO> userRanking = request.getAttribute("userRanking");
+			UserInfoDTO userInfo = null;
+			List<UserInfoDTO> userRanking = null;
+			Object obj1 = request.getAttribute("userInfo");
+			Object obj2 = request.getAttribute("userRanking");
+			if(obj1!=null){userInfo = (UserInfoDTO)obj1;}
+			if(obj2!=null){userRanking = (List<UserInfoDTO>)obj2;}
 			%>
 			
 			<h2>あなたの戦績</h2>
 			<table>
 				<thead>
 					<tr>
-					<!-- 2025/06/04 夕会後 ここから実装 -->
-						<th>ユーザー名</th>
+						<th>ユーザー名</th>		
 						<th>勝ち</th>
 						<th>負け</th>
 						<th>引き分け</th>
@@ -49,14 +52,17 @@
 					<tr>
 						<td><%=userInfo.getUserName() %></td>
 						<td><%=userInfo.getWinCount() %></td>
-						<td><%=userinfo.getLoseCount() %></td>
+						<td><%=userInfo.getLoseCount() %></td>
 						<td><%=userInfo.getDrawCount() %></td>
 						<td><%=userInfo.getWinRate() %></td>
 					</tr>
 				</tbody>
 			</table>
 			<form action="UserInfoController" method="post">
-				<input type="submit" value="アカウント設定へ">
+				<input type="submit" value="ユーザー設定へ">
+			</form>
+			<form action="UserInfoController" method="get">
+				<input type="submit" value="メニューに戻る">
 			</form>
 		</div>
 
@@ -67,31 +73,27 @@
 			<table>
 				<thead>
 					<tr>
+						<th>ランク</th>
 						<th>ユーザー名</th>
 						<th>勝率</th>
 					</tr>
 				</thead>
 				<tbody>
+<%
+					UserInfoDTO uiDTO;
+					for(int i=0; i<userRanking.size(); i++){
+						uiDTO = userRanking.get(i);
+						
+%>
 					<tr>
-						<td>たかはし</td>
-						<td>82.4%</td>
+						<td><%=i+1 %></td>
+						<td><%=uiDTO.getUserName()%></td>
+						<td><%=String.format("%.2f", uiDTO.getWinRate())%>%</td>
 					</tr>
-					<tr>
-						<td>すずき</td>
-						<td>75.0%</td>
-					</tr>
-					<tr>
-						<td>さとう</td>
-						<td>74.3%</td>
-					</tr>
-					<tr>
-						<td>たなか</td>
-						<td>72.8%</td>
-					</tr>
-					<tr>
-						<td>わたなべ</td>
-						<td>70.6%</td>
-					</tr>
+<%
+					}
+%>
+
 				</tbody>
 			</table>
 		</div>

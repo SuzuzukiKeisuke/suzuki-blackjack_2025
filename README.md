@@ -2,6 +2,7 @@
 ## ファイル
 - プロジェクト/Suzuki_Blackjack_2025/src/main/
     - java
+        - controller
         - model
             - dao
             - dto
