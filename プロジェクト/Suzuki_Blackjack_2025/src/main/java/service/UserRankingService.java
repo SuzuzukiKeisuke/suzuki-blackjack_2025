@@ -4,23 +4,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.dao.UserDAO;
+import model.dto.UserAccountDTO;
 import model.dto.UserInfoDTO;
 import model.entity.UserStats;
 import util.UserConverter;
 
 public class UserRankingService {
-	
+	UserDAO uDAO = new UserDAO();
 	public UserInfoDTO getUserInfo(int userId) {
+		
 		// dbアクセス
-		UserDAO uDAO = new UserDAO();
 		return UserConverter.toUserInfoDTO(uDAO.getUserStatsById(userId));
 		
 	}
 	
+	// 全アカウントリスト取得
+	public List<UserAccountDTO> getUserList(){
+		List<UserAccountDTO> userList = new ArrayList<UserAccountDTO>();
+		uDAO.getUserList().forEach(user -> userList.add(UserConverter.toUserAccountDTO(user)));
+		return userList;
+	}
+	
+	
+	
+	
 	
 	public List<UserInfoDTO> getUserRanking(){
 		// usersテーブルのDAO
-		UserDAO uDAO = new UserDAO();
+		
 		
 		// 返り値用
 		List<UserInfoDTO> userInfoList = new ArrayList<UserInfoDTO>();

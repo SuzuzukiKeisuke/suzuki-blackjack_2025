@@ -71,7 +71,6 @@ public class UserDAO {
 	
 	// usersのリストを取得する
 	public List<User> getUserList(){
-		User user = new User();
 		List<User> userList = new ArrayList<User>();
 		System.out.println("DB接続@UserDAO/getUserList");
 		try {
@@ -80,9 +79,9 @@ public class UserDAO {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while(rs.next()) {
+				User user = new User();
 				user.setUserId(rs.getInt("user_id"));
 				user.setUserName(rs.getString("user_name"));
-//				user.setUserPassword(rs.getString("user_password"));
 				user.setUserIsAdmin(rs.getBoolean("user_isadmin"));
 				userList.add(user);
 			}
@@ -226,7 +225,7 @@ public class UserDAO {
 			System.out.println("DB接続@UserDAO/getUserStatsList");
 			try {
 				con = DatabaseUtil.getConnection();
-				String sql = "SELECT *, column1 / NULL(column2, 0) AS ratio FROM users ORDER BY ratio DESC LIMIT 5";
+				String sql = "SELECT *, user_wincount / IFNULL((user_wincount + user_losecount + user_drawcount), 0) AS ratio FROM users ORDER BY ratio DESC LIMIT 5";
 				ps = con.prepareStatement(sql);
 				rs = ps.executeQuery();
 				while(rs.next()) {

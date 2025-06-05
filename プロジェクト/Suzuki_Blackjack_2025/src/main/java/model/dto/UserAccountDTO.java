@@ -27,6 +27,13 @@ public class UserAccountDTO {
 	public boolean isUserIsAdmin() {
 		return userIsAdmin;
 	}
+	public String showIsAdmin() {
+		if(this.userIsAdmin) {
+			return "T";
+		}else {
+			return "F";
+		}
+	}
 	public void setUserIsAdmin(boolean userIsAdmin) {
 		this.userIsAdmin = userIsAdmin;
 	}

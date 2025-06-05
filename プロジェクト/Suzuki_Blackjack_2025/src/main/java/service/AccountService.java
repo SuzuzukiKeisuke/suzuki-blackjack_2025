@@ -10,16 +10,25 @@ public class AccountService {
 	
 	// usersテーブルのDAO
 	UserDAO uDAO = new UserDAO();
+	
+	// idからUserAccountDTOを得る
+	public UserAccountDTO getUserById(int userId) {
+		return UserConverter.toUserAccountDTO(uDAO.getUserById(userId)); 
+	}
 
 	// アカウント名変更
-	public UserAccountDTO changeUserName(int userId, String newUserName) {
+	public UserAccountDTO changeUserName(String userName, String userPassword, String newUserName) {
+		
+		// ユーザ名とパスワードでアカウントを探す
+		User user = uDAO.getUserByNameAndPassword(userName, userPassword);
+
 		
 		// Idを参照してアカウント名を変更
-		int num = uDAO.updateUsernameById(userId, newUserName);
+		int num = uDAO.updateUsernameById(user.getUserId(), newUserName);
 		System.out.println(num + "件処理しました");
 		
 		// アカウントの情報を返す
-		User user = uDAO.getUserById(userId);
+		user = uDAO.getUserById(user.getUserId());
 		return UserConverter.toUserAccountDTO(user);
 	}
 	
@@ -32,7 +41,5 @@ public class AccountService {
 			return false;
 		}
 	}
-	
-	// RankingServiceの作成
-	// UserInfoDTOの生成クラスを作成
+
 }

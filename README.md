@@ -18,10 +18,17 @@
 - 要件定義
 ---
 # TODO
++ [ ] アカウント操作のパスワード認証
+### 06/05
+- [x] userInfo
+- [x] userSetting
+- [x] adminmenu
+- [x] adminSetting
+- userinfoのランキング表示から
 ### 06/04 夕会FB
 - [x] 勝率計算if文修正
-- [ ] Switch文のdefault
-- [ ] DAO パスワード渡さない
+- [x] Switch文のdefault
+- [x] DAO パスワード渡さない
 DB設計 時間情報も履歴に含めた方がいいかもしれない 過去何時間分の結果を見る ができるため
 
 
