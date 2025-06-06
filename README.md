@@ -19,13 +19,13 @@
 - 要件定義
 ---
 # TODO
+**設計メモ**
 + [ ] アカウント操作のパスワード認証
++ [ ] CardsからDeckとHandへの継承関係?
 ### 06/06
-- [ ] Viewの実装
-- [ ] Modelの実装
-
-
-
+- [x] Viewの実装
+- [x] Modelの実装
+- [ ] Controllerの実装
 
 ### 06/05
 - [x] userInfo
