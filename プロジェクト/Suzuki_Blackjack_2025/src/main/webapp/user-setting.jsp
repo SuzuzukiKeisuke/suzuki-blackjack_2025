@@ -50,7 +50,7 @@
 	</form>
 	<hr>
 	<h2>アカウント削除</h2>
-	<form action="AdminSettingController" method="post">
+	<form action="UserSettingController" method="post">
 		<input type="hidden" name="dowhat" value="delete">
 		<input type="submit" value="アカウント削除" class="btn btn-danger">
 	</form>

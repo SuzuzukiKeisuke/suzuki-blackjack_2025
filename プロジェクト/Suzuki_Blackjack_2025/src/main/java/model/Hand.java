@@ -1,11 +1,15 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import model.entity.Card;
 
 public class Hand {
 	private List<Card> cards;	// 手札
+	public Hand() {
+		cards = new ArrayList<Card>();
+	}
 	public Hand(List<Card> cards) {
 		this.cards = cards;
 	}
