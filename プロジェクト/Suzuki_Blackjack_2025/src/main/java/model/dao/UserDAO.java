@@ -16,7 +16,7 @@ public class UserDAO {
 	private Connection con = null;
 	private PreparedStatement ps = null;
 	private ResultSet rs = null;
-	
+
 	// user_nameとuser_passwordを参照してレコードを検索
 	public User getUserByNameAndPassword(String name, String password) {
 		User user = null;
@@ -28,11 +28,11 @@ public class UserDAO {
 			ps.setString(1, name);
 			ps.setString(2, password);
 			rs = ps.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				user = new User();
 				user.setUserId(rs.getInt("user_id"));
 				user.setUserName(rs.getString("user_name"));
-//				user.setUserPassword(rs.getString("user_password"));
+				//				user.setUserPassword(rs.getString("user_password"));
 				user.setUserIsAdmin(rs.getBoolean("user_isadmin"));
 			}
 		} catch (SQLException e) {
@@ -41,36 +41,36 @@ public class UserDAO {
 			DatabaseUtil.close(rs, ps, con);
 			System.out.println("DB切断@UserDAO/getUserByNameAndPassword");
 		}
-		return user;		
+		return user;
 	}
-	
+
 	// idを参照してレコードを検索
-		public User getUserById(int userId) {
-			User user = new User();
-			System.out.println("DB接続@UserDAO/getUserById");
-			try {
-				con = DatabaseUtil.getConnection();
-				String sql = "SELECT * FROM users WHERE user_id = ?";
-				ps = con.prepareStatement(sql);
-				ps.setInt(1, userId);
-				rs = ps.executeQuery();
-				while(rs.next()) {
-					user.setUserId(rs.getInt("user_id"));
-					user.setUserName(rs.getString("user_name"));
-//					user.setUserPassword(rs.getString("user_password"));
-					user.setUserIsAdmin(rs.getBoolean("user_isadmin"));
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				DatabaseUtil.close(rs, ps, con);
-				System.out.println("DB切断@UserDAO/getUserById");
+	public User getUserById(int userId) {
+		User user = new User();
+		System.out.println("DB接続@UserDAO/getUserById");
+		try {
+			con = DatabaseUtil.getConnection();
+			String sql = "SELECT * FROM users WHERE user_id = ?";
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, userId);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				user.setUserId(rs.getInt("user_id"));
+				user.setUserName(rs.getString("user_name"));
+				//					user.setUserPassword(rs.getString("user_password"));
+				user.setUserIsAdmin(rs.getBoolean("user_isadmin"));
 			}
-			return user;		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DatabaseUtil.close(rs, ps, con);
+			System.out.println("DB切断@UserDAO/getUserById");
 		}
-	
+		return user;
+	}
+
 	// usersのリストを取得する
-	public List<User> getUserList(){
+	public List<User> getUserList() {
 		List<User> userList = new ArrayList<User>();
 		System.out.println("DB接続@UserDAO/getUserList");
 		try {
@@ -78,14 +78,14 @@ public class UserDAO {
 			String sql = "SELECT * FROM users ORDER BY user_id";
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				User user = new User();
 				user.setUserId(rs.getInt("user_id"));
 				user.setUserName(rs.getString("user_name"));
 				user.setUserIsAdmin(rs.getBoolean("user_isadmin"));
 				userList.add(user);
 			}
-		} catch (SQLException e){
+		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			DatabaseUtil.close(rs, ps, con);
@@ -93,13 +93,11 @@ public class UserDAO {
 		}
 		return userList;
 	}
-	
-	
-	
+
 	// 同じユーザー名が存在しないかをチェックする
 	public boolean userNameValidator(String name) {
 		boolean flag = false;
-		
+
 		System.out.println("DB接続@UserDAO/userNameValidator");
 		try {
 			con = DatabaseUtil.getConnection();
@@ -114,13 +112,13 @@ public class UserDAO {
 			DatabaseUtil.close(rs, ps, con);
 			System.out.println("DB切断@UserDAO/userNameValidator");
 		}
-				
+
 		return !flag;
 		// 以下を反転して返す
 		// true -> このuser_nameを使用しているレコードが存在する 
 		// false -> このuser_nameはまだ使用されていない
 	}
-	
+
 	// user_nameとuser_passwordからusersにレコードを作成
 	public int createUserByNameAndPassword(String name, String password) {
 		int num = 0;
@@ -132,18 +130,16 @@ public class UserDAO {
 			ps.setString(1, name);
 			ps.setString(2, password);
 			num = ps.executeUpdate();
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			DatabaseUtil.close(rs, ps, con);
 			System.out.println("DB切断@UserDAO/createUserByNameAndPassword");
 		}
-		return num;		
+		return num;
 	}
-	
-	
-	
+
 	// idを参照してアカウント名を変更する
 	public int updateUsernameById(int userId, String newUserName) {
 		int num = 0;
@@ -155,15 +151,15 @@ public class UserDAO {
 			ps.setString(1, newUserName);
 			ps.setInt(2, userId);
 			num = ps.executeUpdate();
-		}catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			DatabaseUtil.close(rs, ps, con);
 			System.out.println("DB切断@UserDAO/createUserByNameAndPassword");
 		}
 		return num;
 	}
-	
+
 	// idを参照してアカウントを削除する
 	public int deleteUserById(int userId) {
 		int num = 0;
@@ -174,16 +170,15 @@ public class UserDAO {
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, userId);
 			num = ps.executeUpdate();
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			DatabaseUtil.close(rs, ps, con);
 			System.out.println("DB切断@UserDAO/deleteUserById");
 		}
 		return num;
 	}
-	
-	
+
 	// idを参照して戦績を更新する
 	public int updateUserStatsById(Result result) {
 		int num = 0;
@@ -191,85 +186,86 @@ public class UserDAO {
 		try {
 			con = DatabaseUtil.getConnection();
 			String sql = "";
-			switch(result.getResultCode()){
-				case 0:
-					sql = "UPDATE users SET user_losecount = user_losecount + 1 WHERE user_id = ?";
-					break;
-				case 1:
-					sql = "UPDATE users SET user_wincount = user_wincount + 1 WHERE user_id = ?";
-					break;
-				case 2:
-					sql = "UPDATE users SET user_drawcount = user_drawcount + 1 WHERE user_id = ?";
-					break;
-				default:
-					System.out.println("UserDAO/result/resultCodeエラー 0~2以外の数値 -> " + result.getResultCode());
-					return 0;
+			switch (result.getResultCode()) {
+			case 0:
+				sql = "UPDATE users SET user_losecount = user_losecount + 1 WHERE user_id = ?";
+				break;
+			case 1:
+				sql = "UPDATE users SET user_wincount = user_wincount + 1 WHERE user_id = ?";
+				break;
+			case 2:
+				sql = "UPDATE users SET user_drawcount = user_drawcount + 1 WHERE user_id = ?";
+				break;
+			default:
+				System.out.println("UserDAO/result/resultCodeエラー 0~2以外の数値 -> " + result.getResultCode());
+				return 0;
 			}
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, result.getUserId());
 			num = ps.executeUpdate();
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			DatabaseUtil.close(rs, ps, con);
 			System.out.println("DB切断@UserDAO/updateUserStatsById");
 		}
 		return num;
 	}
-		
-		
-		// 勝率トップ5を取得する
-		public List<UserStats> getUserStatsList(){
-			UserStats userstats = null;
-			List<UserStats> userStatsList = new ArrayList<UserStats>();
-			System.out.println("DB接続@UserDAO/getUserStatsList");
-			try {
-				con = DatabaseUtil.getConnection();
-				String sql = "SELECT *, user_wincount / IFNULL((user_wincount + user_losecount + user_drawcount), 0) AS ratio FROM users ORDER BY ratio DESC LIMIT 5";
-				ps = con.prepareStatement(sql);
-				rs = ps.executeQuery();
-				while(rs.next()) {
-					userstats = new UserStats();
-					userstats.setUserId(rs.getInt("user_id"));
-					userstats.setUserName(rs.getString("user_name"));
-					userstats.setWinCount(rs.getInt("user_wincount"));
-					userstats.setLoseCount(rs.getInt("user_losecount"));
-					userstats.setDrawCount(rs.getInt("user_drawcount"));
-					userStatsList.add(userstats);
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				DatabaseUtil.close(rs, ps, con);
-				System.out.println("DB切断@UserDAO/getUserStatsList");
+
+	// 勝率トップ5を取得する
+	public List<UserStats> getUserStatsList() {
+		UserStats userstats = null;
+		List<UserStats> userStatsList = new ArrayList<UserStats>();
+		System.out.println("DB接続@UserDAO/getUserStatsList");
+		try {
+			con = DatabaseUtil.getConnection();
+			String sql = "SELECT *, user_wincount / IFNULL((user_wincount + user_losecount + user_drawcount), 0) AS ratio FROM users ORDER BY ratio DESC LIMIT 5";
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				userstats = new UserStats();
+				userstats.setUserId(rs.getInt("user_id"));
+				userstats.setUserName(rs.getString("user_name"));
+				userstats.setWinCount(rs.getInt("user_wincount"));
+				userstats.setLoseCount(rs.getInt("user_losecount"));
+				userstats.setDrawCount(rs.getInt("user_drawcount"));
+				userStatsList.add(userstats);
 			}
-			return userStatsList;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DatabaseUtil.close(rs, ps, con);
+			System.out.println("DB切断@UserDAO/getUserStatsList");
 		}
-		
-		// idからuserstatsを取得する
-				public UserStats getUserStatsById(int userId){
-					UserStats userStats = null;
-					System.out.println("DB接続@UserDAO/getUserStatsById");
-					try {
-						con = DatabaseUtil.getConnection();
-						String sql = "SELECT * FROM users WHERE user_id = ?";
-						ps = con.prepareStatement(sql);
-						ps.setInt(1, userId);
-						rs = ps.executeQuery();
-						while(rs.next()) {
-							userStats = new UserStats();
-							userStats.setUserId(rs.getInt("user_id"));
-							userStats.setUserName(rs.getString("user_name"));
-							userStats.setWinCount(rs.getInt("user_wincount"));
-							userStats.setLoseCount(rs.getInt("user_losecount"));
-							userStats.setDrawCount(rs.getInt("user_drawcount"));
-						}
-					} catch (SQLException e) {
-						e.printStackTrace();
-					} finally {
-						DatabaseUtil.close(rs, ps, con);
-						System.out.println("DB切断@UserDAO/getUserStatsById");
-					}
-					return userStats;
-				}
+		return userStatsList;
+	}
+
+	// idからuserstatsを取得する
+	public UserStats getUserStatsById(int userId) {
+		UserStats userStats = null;
+		System.out.println("DB接続@UserDAO/getUserStatsById");
+		try {
+			con = DatabaseUtil.getConnection();
+			String sql = "SELECT * FROM users WHERE user_id = ?";
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, userId);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				userStats = new UserStats();
+				userStats.setUserId(rs.getInt("user_id"));
+				userStats.setUserName(rs.getString("user_name"));
+				userStats.setWinCount(rs.getInt("user_wincount"));
+				userStats.setLoseCount(rs.getInt("user_losecount"));
+				userStats.setDrawCount(rs.getInt("user_drawcount"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DatabaseUtil.close(rs, ps, con);
+			System.out.println("DB切断@UserDAO/getUserStatsById");
+		}
+		return userStats;
+	}
+
+
 }

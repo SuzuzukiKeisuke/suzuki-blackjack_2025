@@ -26,7 +26,18 @@ public class Table {
 		this.dealer = dealer;
 		this.player = player;
 	}
-
+	
+	public Deck getDeck() {
+		return deck;
+	}
+	
+	public PlayerBase getPlayer() {
+		return player;
+	}
+	
+	public PlayerBase getDealer() {
+		return dealer;
+	}
 	// ゲームの進行にかかわるメソッド
 	// ヒット、スタンド、場のカードの取得などが可能
 
