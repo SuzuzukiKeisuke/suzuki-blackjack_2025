@@ -43,7 +43,7 @@ public class Table {
 
 	public boolean doHit(PlayerBase activePlayer) {
 		// Player -> 一度に一枚引く
-		// Deaker -> 17以上になるまで引く
+		// Dealer -> 17以上になるまで引く
 		deck = activePlayer.hit(deck);
 		if(activePlayer.isBurst()) {
 			return true; // BurstしたらTRUEを返す

@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,6 +26,8 @@ public class BJStartCotroller extends HttpServlet {
 		// セッションを取得
 		HttpSession session = request.getSession();
 		if(session.getAttribute("loginUser")!=null) {
+			
+			// BJ情報を宣言
 			Table table = new Table();
 			BJTableDTO bjDTO = 
 					new BJTableDTO(table.getDealer().getCards(),
@@ -32,13 +35,16 @@ public class BJStartCotroller extends HttpServlet {
 							table.getDealer().getHandValue(),
 							table.getPlayer().getHandValue()
 					);
-			request.setAttribute("tabledata", bjDTO);
-			session.setAttribute("deckdata", table.getDeck());
+			request.setAttribute("tabledata", bjDTO);	// 画面に表示するデータ
+			session.setAttribute("deckdata", table.getDeck());	// 山札の情報
+			RequestDispatcher rd = request.getRequestDispatcher("blackjack-playing.java");
+			rd.forward(request, response);
 		}else {// ログインされていない
 			request.setAttribute("message", "ログインしてください");
-			
+			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+			rd.forward(request, response);
 		}
-
+		
 	}
 
 }

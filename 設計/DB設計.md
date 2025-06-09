@@ -13,10 +13,11 @@
 
 ### results テーブル
 | フィールド名 | 型 |
-|----------------|---------|
-| result_id (PK) | INT     |
-| user_id (FK)   | INT     |
-| result_code    | TINYINT |
+|-------------------|-----------|
+| result_id (PK)    | INT       |
+| user_id (FK)      | INT       |
+| result_code       | TINYINT   |
+| result_created_at | TIMESTAMP |
 
 ## SQL文
 ```SQL
@@ -35,6 +36,7 @@ CREATE TABLE results (
     result_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
     result_code TINYINT NOT NULL,
+    result_created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
 
@@ -53,15 +55,16 @@ MariaDB [blackjack]> SHOW COLUMNS FROM users;
 +----------------+-------------+------+-----+---------+----------------+
 7 rows in set (0.015 sec)
 
-MariaDB [blackjack]> SHOW COLUMNS FROM results;
-+-------------+------------+------+-----+---------+----------------+
-| Field       | Type       | Null | Key | Default | Extra          |
-+-------------+------------+------+-----+---------+----------------+
-| result_id   | int(11)    | NO   | PRI | NULL    | auto_increment |
-| user_id     | int(11)    | NO   | MUL | NULL    |                |
-| result_code | tinyint(4) | NO   |     | NULL    |                |
-+-------------+------------+------+-----+---------+----------------+
-3 rows in set (0.007 sec)
+MariaDB [blackjack]> SHOW COLUMNS from results;
++-------------------+------------+------+-----+---------------------+----------------+
+| Field             | Type       | Null | Key | Default             | Extra          |
++-------------------+------------+------+-----+---------------------+----------------+
+| result_id         | int(11)    | NO   | PRI | NULL                | auto_increment |
+| user_id           | int(11)    | NO   | MUL | NULL                |                |
+| result_code       | tinyint(4) | NO   |     | NULL                |                |
+| result_created_at | timestamp  | NO   |     | current_timestamp() |                |
++-------------------+------------+------+-----+---------------------+----------------+
+4 rows in set (0.009 sec)
 ```
 ---
 **補足**

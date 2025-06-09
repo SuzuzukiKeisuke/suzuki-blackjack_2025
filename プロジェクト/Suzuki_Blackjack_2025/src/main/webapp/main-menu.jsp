@@ -19,7 +19,7 @@
 	<hr>
 </header>
 <h1>メインメニュー</h1>
-<form action="BJStartController" method="get">
+<form action="BJStartController" method="post">
 	<input type="submit" value="ブラックジャックをプレイ">
 </form>
 <form action="MainMenuController" method="post">
