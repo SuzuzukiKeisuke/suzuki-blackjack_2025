@@ -5,12 +5,13 @@ import java.util.List;
 
 import model.entity.Card;
 
-public class Hand {
+public abstract class PlayerBase {
 	private List<Card> cards;	// 手札
-	public Hand() {
+	
+	public PlayerBase() {
 		cards = new ArrayList<Card>();
 	}
-	public Hand(List<Card> cards) {
+	public PlayerBase(List<Card> cards) {
 		this.cards = cards;
 	}
 	public int getCardCount() {// 枚数
@@ -19,10 +20,6 @@ public class Hand {
 	public List<Card> getCards() {
 		return cards;
 	}
-	public void setCards(List<Card> cards) {
-		this.cards = cards;
-	}
-	
 	// 手札の合計値
 	public int getHandValue() {
 		int handValue = 0;
@@ -31,9 +28,18 @@ public class Hand {
 		}
 		return handValue;
 	}
+	
+
+	
 	// バーストしているか
 	public boolean isBurst() {
 		return getHandValue() > 21;
 	}
+
+	// 手札に一枚足す
+	public void dealCard(Card card) {
+		cards.add(card);
+	}
+	public abstract Deck hit(Deck deck);
 
 }
