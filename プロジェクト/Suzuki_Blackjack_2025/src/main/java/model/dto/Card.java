@@ -1,4 +1,4 @@
-package model.entity;
+package model.dto;
 
 public class Card {
 	private int cardNum; // 1~13

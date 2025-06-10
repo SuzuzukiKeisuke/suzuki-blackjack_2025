@@ -27,6 +27,7 @@ public class Table {
 		this.player = player;
 	}
 	
+	
 	public Deck getDeck() {
 		return deck;
 	}

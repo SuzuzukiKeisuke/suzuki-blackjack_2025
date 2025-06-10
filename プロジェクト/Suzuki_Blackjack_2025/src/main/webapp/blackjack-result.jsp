@@ -1,18 +1,68 @@
+<%@ page import="model.dto.Card" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="model.PlayerBase" %>
+<%@ page import="model.Table" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-Object obj1 = request.getAttribute("playerhand");
-Object obj2 = request.getAttribute("dealerhand");
-if (obj1 != null && obj2 != null) {
-	// カード取得処理をここに書く
+
+
+Object resultObj = request.getAttribute("resultcode");
+int resultCode = -1;
+if(resultObj!=null){
+	resultCode = (int)resultObj;
 }
 
-// 仮置きのカード
-int dealercardCount = 2;
-int[] dealercard = { 3, 7 };
+Object tableObj = request.getAttribute("table");
+Table table;
+if(tableObj!=null){
+	table = (Table)tableObj;
+}else{
+	System.out.println("エラー！tableがblackjack-playingに正常に送られてきていない");
+	table = new Table();
+}
 
-int playercardCount = 2;
-int[] playercard = { 10, 2 };
+PlayerBase player = table.getPlayer();
+PlayerBase dealer = table.getDealer();
+
+//
+//
+//Object objPH = request.getAttribute("playerhand");
+//Object objDH = request.getAttribute("dealerhand");
+//Object objD  = request.getAttribute("deck")
+//List<Card> playerHand;
+//List<Card> dealerHand;
+//if (obj1 != null && obj2 != null) {
+//	// カード取得処理をここに書く
+//	playerHand = (List<Card>) obj1;
+//	dealerHand = (List<Card>) obj2;
+//}else{
+//	playerHand = new ArrayList<>();
+//	dealerHand = new ArrayList<>();
+//}
+//
+// 仮置きのカード
+//int dealercardCount = playerHand.size();
+//int[] dealercard = { 3, 7 };
+//
+//int playercardCount = 2;
+//int[] playercard = { 10, 2 };
+
+
+
+// Object obj1 = request.getAttribute("playerhand");
+// Object obj2 = request.getAttribute("dealerhand");
+// if (obj1 != null && obj2 != null) {
+//	// カード取得処理をここに書く
+//}
+//
+// 仮置きのカード
+//int dealercardCount = 2;
+//int[] dealercard = { 3, 7 };
+//
+//int playercardCount = 2;
+//int[] playercard = { 10, 2 };
 %>
 <!DOCTYPE html>
 <html>
@@ -46,34 +96,36 @@ body {
 	<div class="container py-4">
 
 		<h1 class="text-center mb-4">
-			<% if(/* プレイヤーの勝ち*/ true){ %>
+			<% if(resultCode == 1){ %>
 				YOU WIN!
-			<% }else if(/*ディーラーの勝ち*/ true){%>
+			<% }else if(resultCode == 0){%>
 				YOU LOSE...
-			<% }else{ /*引き分け*/%>
+			<% }else if(resultCode == 2){ /*引き分け*/%>
 				DRAW
-			<% } %>
+			<% }else{ %>
+				resultCodeにエラーがあります resultCode=<%=resultCode %>
+			<% }%>
 		</h1>
 
 		<!-- ディーラー -->
-		<h2 class="text-center">ディーラー:<%= 20 /*合計*/ %></h2>
+		<h2 class="text-center">ディーラー : <%=dealer.getHandValue()%></h2>
 		<div class="d-flex justify-content-center gap-2 mb-4">
 			<%
-			for (int i = 0; i < dealercardCount; i++) {
+			for (int i = 0; i < dealer.getCards().size(); i++) {
 			%>
-			<div class="card"><%=dealercard[i]%></div>
+			<div class="card"><%=dealer.getCards().get(i).getCardLabel()%></div>
 			<%
 			}
 			%>
 		</div>
 
 		<!-- プレイヤー -->
-		<h2 class="text-center">あなた:<%= 21 /*合計*/ %></h2>
+		<h2 class="text-center">あなた : <%=player.getHandValue()%></h2>
 		<div class="d-flex justify-content-center gap-2 mb-4">
 			<%
-			for (int i = 0; i < playercardCount; i++) {
+			for (int i = 0; i < player.getCards().size(); i++) {
 			%>
-			<div class="card"><%=playercard[i]%></div>
+			<div class="card"><%=player.getCards().get(i).getCardLabel()%></div>
 			<%
 			}
 			%>
@@ -81,12 +133,14 @@ body {
 
 		<!-- ボタン -->
 		<div class="text-center">
-			<form method="get" action="BJStartController">
+			<form method="post" action="BJResultController">
+			<input type="hidden" name="action" value="playagain">
 				<button type="submit" name="playagain" value="playagain"
 					class="btn btn-primary">もう一度遊ぶ</button>
 			</form>
-			<form method="post" action="blackjack.jsp">
-				<button type="submit" name="backtomenu" value="backtomeu"
+			<form method="post" action="BJResultController">
+			<input type="hidden" name="action" value="mainmenu">
+				<button type="submit" name="backtomenu" value="backtomenu"
 					class="btn btn-secondary">メニューに戻る</button>
 
 			</form>

@@ -2,7 +2,7 @@ package model;
 
 import java.util.List;
 
-import model.entity.Card;
+import model.dto.Card;
 
 public class Dealer extends PlayerBase {
 	// コンストラクタ
@@ -23,7 +23,7 @@ public class Dealer extends PlayerBase {
 	// 点数が17以上になるまで引き続ける
 	// 引き終えたらバースト判定
 	public Deck hit(Deck deck) {
-		while(getCardCount()<17) {
+		while(getHandValue()<17) {
 			dealCard(deck.getCard());
 		}
 		return deck;

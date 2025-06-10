@@ -11,16 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.Table;
-import model.dto.BJTableDTO;
 
-@WebServlet("/BJStartCotroller")
-public class BJStartCotroller extends HttpServlet {
+@WebServlet("/BJStartController")
+public class BJStartController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		
-	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// セッションを取得
@@ -29,15 +23,11 @@ public class BJStartCotroller extends HttpServlet {
 			
 			// BJ情報を宣言
 			Table table = new Table();
-			BJTableDTO bjDTO = 
-					new BJTableDTO(table.getDealer().getCards(),
-							table.getPlayer().getCards(),
-							table.getDealer().getHandValue(),
-							table.getPlayer().getHandValue()
-					);
-			request.setAttribute("tabledata", bjDTO);	// 画面に表示するデータ
-			session.setAttribute("deckdata", table.getDeck());	// 山札の情報
-			RequestDispatcher rd = request.getRequestDispatcher("blackjack-playing.java");
+			
+			request.setAttribute("table", table);	// 画面に送る用		
+			session.setAttribute("table", table);			
+			// BJプレイ画面をフォワード
+			RequestDispatcher rd = request.getRequestDispatcher("blackjack-playing.jsp");
 			rd.forward(request, response);
 		}else {// ログインされていない
 			request.setAttribute("message", "ログインしてください");

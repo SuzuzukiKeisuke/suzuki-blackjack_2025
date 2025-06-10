@@ -1,7 +1,9 @@
 package service;
 
+import model.dao.ResultDAO;
 import model.dao.UserDAO;
 import model.dto.UserAccountDTO;
+import model.entity.Result;
 import model.entity.User;
 import util.UserConverter;
 
@@ -40,6 +42,16 @@ public class AccountService {
 		}else { // アカウントが存在しなかったか、アカウントが複数消去された0
 			return false;
 		}
+	}
+	
+	// 戦績更新
+	public void updateStatsAndResult(Result result) {
+		ResultDAO rDAO = new ResultDAO();
+		int num = 0;
+		num = rDAO.InsertResultById(result);
+		System.out.println(num+"件処理しました");
+		num = uDAO.updateUserStatsById(result);
+		System.out.println(num+"件処理しました");
 	}
 
 }

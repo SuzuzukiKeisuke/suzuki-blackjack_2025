@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.entity.Card;
+import model.dto.Card;
 
 public abstract class PlayerBase {
 	private List<Card> cards;	// 手札

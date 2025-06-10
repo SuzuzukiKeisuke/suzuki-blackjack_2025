@@ -2,7 +2,7 @@ package model;
 
 import java.util.List;
 
-import model.entity.Card;
+import model.dto.Card;
 
 public class Player extends PlayerBase {
 	// コンストラクタ
