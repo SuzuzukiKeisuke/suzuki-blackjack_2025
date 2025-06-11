@@ -51,11 +51,8 @@ public class BJPlayController extends HttpServlet {
 						as.updateStatsAndResult(new Result(loginUser.getUserId(), table.doJudge()));
 
 						// jspに情報を送る
-						System.out.println("debug1");
 						request.setAttribute("resultcode", table.doJudge());
-						System.out.println("debug2");
 						rd = request.getRequestDispatcher("blackjack-result.jsp");
-						System.out.println("debug3");
 
 					} else if (table.doHit(table.getPlayer())) {// バーストしている場合
 

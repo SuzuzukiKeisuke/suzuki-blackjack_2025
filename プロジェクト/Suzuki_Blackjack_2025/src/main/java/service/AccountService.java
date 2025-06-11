@@ -23,15 +23,20 @@ public class AccountService {
 		
 		// ユーザ名とパスワードでアカウントを探す
 		User user = uDAO.getUserByNameAndPassword(userName, userPassword);
-
+		if(user!=null) {
+			// Idを参照してアカウント名を変更
+			int num = uDAO.updateUsernameById(user.getUserId(), newUserName);
+			System.out.println(num + "件処理しました");
+			
+			// アカウントの情報を返す
+			user = uDAO.getUserById(user.getUserId());
+			return UserConverter.toUserAccountDTO(user);
+		}else {
+			System.out.println("アカウントが見つかりませんでした");
+			return null;
+		}
 		
-		// Idを参照してアカウント名を変更
-		int num = uDAO.updateUsernameById(user.getUserId(), newUserName);
-		System.out.println(num + "件処理しました");
 		
-		// アカウントの情報を返す
-		user = uDAO.getUserById(user.getUserId());
-		return UserConverter.toUserAccountDTO(user);
 	}
 	
 	

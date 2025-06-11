@@ -46,14 +46,22 @@ public class UserSettingController extends HttpServlet {
 			String newUserName = request.getParameter("userName");
 			String userPassward = request.getParameter("userPassword");
 
-			// 新しいユーザ入力情報を更新
+			// 新しいユーザ入力情報を検索
 			loginUser = as.changeUserName(loginUser.getUserName(), userPassward, newUserName);
-			session.setAttribute("loginUser", loginUser);
+			if(loginUser != null) {
+				session.setAttribute("loginUser", loginUser);
+				// 画面の更新
+				request.setAttribute("message", "アカウント名を更新しました");
+				RequestDispatcher rd1 = request.getRequestDispatcher("user-setting.jsp");
+				rd1.forward(request, response);
+			}else {
+				request.setAttribute("message", "ユーザー認証に失敗しました");
+				RequestDispatcher rd2 = request.getRequestDispatcher("user-setting.jsp");
+				rd2.forward(request, response);
+			}
 
-			// 画面の更新
-			request.setAttribute("message", "アカウント名を更新しました");
-			RequestDispatcher rd1 = request.getRequestDispatcher("user-setting.jsp");
-			rd1.forward(request, response);
+
+
 			break;
 
 		case "delete": // ユーザのレコード消去
