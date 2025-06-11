@@ -18,28 +18,6 @@ if(obj!=null){
 PlayerBase player = table.getPlayer();
 PlayerBase dealer = table.getDealer();
 
-//
-//
-//Object objPH = request.getAttribute("playerhand");
-//Object objDH = request.getAttribute("dealerhand");
-//Object objD  = request.getAttribute("deck")
-//List<Card> playerHand;
-//List<Card> dealerHand;
-//if (obj1 != null && obj2 != null) {
-//	// カード取得処理をここに書く
-//	playerHand = (List<Card>) obj1;
-//	dealerHand = (List<Card>) obj2;
-//}else{
-//	playerHand = new ArrayList<>();
-//	dealerHand = new ArrayList<>();
-//}
-//
-// 仮置きのカード
-//int dealercardCount = playerHand.size();
-//int[] dealercard = { 3, 7 };
-//
-//int playercardCount = 2;
-//int[] playercard = { 10, 2 };
 %>
 <!DOCTYPE html>
 <html>
