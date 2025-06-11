@@ -8,22 +8,23 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <title>メインメニュー</title>
 </head>
-<body>
+<body class="m-3">
 <%
 	UserAccountDTO loginUser = (UserAccountDTO)session.getAttribute("loginUser"); 
 %>
-<header>
+<header class="d-flex justify-content-end">
 	<form action="MainMenuController" method="get" align="right">
-		<input type="submit" value="ログアウト"><%= loginUser.getUserName()%>
+		<input type="submit" value="ログアウト" class="btn btn-outline-secondary btn-sm"/>
+		<%= loginUser.getUserName()%>
 	</form>
 	<hr>
 </header>
-<h1>メインメニュー</h1>
-<form action="BJStartController" method="post">
-	<input type="submit" value="ブラックジャックをプレイ">
+<h1 class="mb-3">メインメニュー</h1>
+<form action="BJStartController" method="post" >
+	<input type="submit" value="ブラックジャックをプレイ" class="btn btn-primary mb-1">
 </form>
-<form action="MainMenuController" method="post">
-	<input type="submit" value="ユーザー情報">
+<form action="MainMenuController" method="post" >
+	<input type="submit" value="ユーザー情報" class="btn btn-secondary">
 </form>
 <% if(loginUser.isUserIsAdmin()){ %>
 	<form action="AdminMenuController" method="post">

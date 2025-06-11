@@ -10,7 +10,7 @@
 	crossorigin="anonymous">
 <title>ユーザー登録</title>
 </head>
-<body>
+<body class="m-3">
 	<h1 class="text-center">BLACKJACK</h1>
 	<h2 class="text-center">新規ユーザー登録</h2>
 	<div class="d-flex justify-content-center">

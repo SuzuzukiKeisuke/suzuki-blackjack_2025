@@ -13,19 +13,21 @@
 	crossorigin="anonymous">
 <title>ユーザー情報</title>
 </head>
-<body>
+<body class="m-3">
 <%
 	UserAccountDTO loginUser = (UserAccountDTO)session.getAttribute("loginUser"); 
 %>
-	<header>
+	<header class="d-flex justify-content-end">
 		<form action="MainMenuController" method="get" align="right">
-			<input type="submit" value="ログアウト"><%=loginUser.getUserName() %>
+			<input type="submit" value="ログアウト" class="btn btn-outline-primary btn-sm">
+			<%= loginUser.getUserName()%>
 		</form>
+	<hr>
 	</header>
 	<hr>
-	<h1>ユーザー情報</h1>
+	<h1 class="mb-3">ユーザー情報</h1>
 	<div class="row">
-		<div class="col-8">
+		<div class="col-8 ">
 			<!--XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
 			<!--左側の要素-->
 			<%	// コントローラからオブジェクトを受け取る
@@ -59,10 +61,10 @@
 				</tbody>
 			</table>
 			<form action="UserInfoController" method="post">
-				<input type="submit" value="ユーザー設定へ">
+				<input type="submit" value="ユーザー設定へ" class="btn btn-primary mb-1">
 			</form>
 			<form action="UserInfoController" method="get">
-				<input type="submit" value="メニューに戻る">
+				<input type="submit" value="メニューに戻る" class="btn btn-secondary">
 			</form>
 		</div>
 

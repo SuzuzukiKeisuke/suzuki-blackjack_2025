@@ -11,7 +11,7 @@
 	crossorigin="anonymous">
 <title>ログイン画面</title>
 </head>
-<body>
+<body class="m-3">
 	<h1 class="text-center">BLACKJACK</h1>
 	<h2 class="text-center">ユーザーログイン</h2>
 	<div class="d-flex justify-content-center">
