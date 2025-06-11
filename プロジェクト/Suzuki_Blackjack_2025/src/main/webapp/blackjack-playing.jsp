@@ -26,25 +26,9 @@ PlayerBase dealer = table.getDealer();
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 	rel="stylesheet">
-	<style>
-body {
-	background-color: #e6f2e6;
-}
-
-.card {
-	width: 50px;
-	height: 75px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-color: white;
-}
-
-.card.back {
-	background-color: black;
-	color: white;
-}
-</style>
+<link
+	href="webapp/css/blackjack.css"
+	rel="stylesheet">
 <title>ブラックジャック</title>
 </head>
 <body>

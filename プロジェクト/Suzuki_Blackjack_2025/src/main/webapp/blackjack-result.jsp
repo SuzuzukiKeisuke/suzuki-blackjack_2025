@@ -26,43 +26,7 @@ if(tableObj!=null){
 PlayerBase player = table.getPlayer();
 PlayerBase dealer = table.getDealer();
 
-//
-//
-//Object objPH = request.getAttribute("playerhand");
-//Object objDH = request.getAttribute("dealerhand");
-//Object objD  = request.getAttribute("deck")
-//List<Card> playerHand;
-//List<Card> dealerHand;
-//if (obj1 != null && obj2 != null) {
-//	// カード取得処理をここに書く
-//	playerHand = (List<Card>) obj1;
-//	dealerHand = (List<Card>) obj2;
-//}else{
-//	playerHand = new ArrayList<>();
-//	dealerHand = new ArrayList<>();
-//}
-//
-// 仮置きのカード
-//int dealercardCount = playerHand.size();
-//int[] dealercard = { 3, 7 };
-//
-//int playercardCount = 2;
-//int[] playercard = { 10, 2 };
 
-
-
-// Object obj1 = request.getAttribute("playerhand");
-// Object obj2 = request.getAttribute("dealerhand");
-// if (obj1 != null && obj2 != null) {
-//	// カード取得処理をここに書く
-//}
-//
-// 仮置きのカード
-//int dealercardCount = 2;
-//int[] dealercard = { 3, 7 };
-//
-//int playercardCount = 2;
-//int[] playercard = { 10, 2 };
 %>
 <!DOCTYPE html>
 <html>
@@ -71,25 +35,7 @@ PlayerBase dealer = table.getDealer();
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 	rel="stylesheet">
-<style>
-body {
-	background-color: #e6f2e6;
-}
-
-.card {
-	width: 50px;
-	height: 75px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-color: white;
-}
-
-.card.back {
-	background-color: black;
-	color: white;
-}
-</style>
+<link rel="stylesheet" href="css/blackjack.css">
 <title>ブラックジャック結果表示</title>
 </head>
 <body>
