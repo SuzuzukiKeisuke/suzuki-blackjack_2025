@@ -16,11 +16,13 @@
 	UserAccountDTO loginUser = (UserAccountDTO) session.getAttribute("loginUser");
 	UserAccountDTO user = (UserAccountDTO) request.getAttribute("user");
 	%>
-	<header>
-		<form action="MainMenuController" method="get" align="right">
-			<input type="submit" value="ログアウト"><%=loginUser.getUserName()%>
-		</form>
-	</header>
+	<header class="d-flex justify-content-end">
+	<form action="MainMenuController" method="get" align="right">
+		<input type="submit" value="ログアウト" class="btn btn-outline-secondary btn-sm"/>
+		<%= loginUser.getUserName()%>
+	</form>
+	<hr>
+</header>
 
 	<h1>管理者-アカウント設定</h1>
 	<dl class="row">
@@ -41,10 +43,11 @@
 					<input type="password" id="inputUserPassword" name="userPassword">
 				</dd>
 			</dl>
-			<input type="submit" class="btn btn-primary" value="更新">
+			<input type="hidden" name="action" value="update">
+			<input type="submit" class="btn btn-primary mb-1" value="更新">
 		</form>
-		<form action="UserSettingController" method="get">
-			<input type="submit" class="btn btn-light" value="戻る">
+		<form action="AdminSettingController" method="post">
+			<input type="submit" class="btn btn-secondary mb-1" value="戻る">
 		</form>
 		<hr>
 	</dl>

@@ -62,7 +62,7 @@
 		</tbody>
 	</table>
 	<form action="AdminMenuController" method="get">
-		<input type="submit" class="btn btn-light" value="メインメニューに戻る">
+		<input type="submit" class="btn btn-secondary" value="メインメニューに戻る">
 	</form>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

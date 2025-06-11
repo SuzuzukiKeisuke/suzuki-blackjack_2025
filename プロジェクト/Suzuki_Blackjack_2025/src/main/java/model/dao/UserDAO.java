@@ -155,7 +155,7 @@ public class UserDAO {
 			e.printStackTrace();
 		} finally {
 			DatabaseUtil.close(rs, ps, con);
-			System.out.println("DB切断@UserDAO/createUserByNameAndPassword");
+			System.out.println("DB切断@UserDAO/updateUserById");
 		}
 		return num;
 	}

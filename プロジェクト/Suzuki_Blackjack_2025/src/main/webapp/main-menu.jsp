@@ -24,11 +24,11 @@
 	<input type="submit" value="ブラックジャックをプレイ" class="btn btn-primary mb-1">
 </form>
 <form action="MainMenuController" method="post" >
-	<input type="submit" value="ユーザー情報" class="btn btn-secondary">
+	<input type="submit" value="ユーザー情報" class="btn btn-secondary mb-3">
 </form>
 <% if(loginUser.isUserIsAdmin()){ %>
 	<form action="AdminMenuController" method="post">
-		<input type="submit" value="管理者メニュー">
+		<input type="submit" value="管理者メニュー" class="btn btn-outline-dark btn-sm">
 	</form>
 <% } %>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
