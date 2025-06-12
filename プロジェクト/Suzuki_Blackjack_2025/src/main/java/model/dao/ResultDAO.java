@@ -28,7 +28,7 @@ public class ResultDAO {
 			e.printStackTrace();
 		} finally {
 			DatabaseUtil.close(rs, ps, con);
-			System.out.println("DB切断@UserDAO/getUserByNameAndPassword");
+			System.out.println("DB切断@ResultDAO/InsertResultById");
 		}
 		return num;
 	}
