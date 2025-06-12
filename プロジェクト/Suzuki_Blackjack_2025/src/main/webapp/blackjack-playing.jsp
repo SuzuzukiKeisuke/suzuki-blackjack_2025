@@ -26,25 +26,9 @@ PlayerBase dealer = table.getDealer();
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 	rel="stylesheet">
-	<style>
-body {
-	background-color: #e6f2e6;
-}
-
-.card {
-	width: 50px;
-	height: 75px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-color: white;
-}
-
-.card.back {
-	background-color: black;
-	color: white;
-}
-</style>
+<link
+	href="css/blackjack.css"
+	rel="stylesheet">
 <title>ブラックジャック</title>
 </head>
 <body>
@@ -90,8 +74,7 @@ body {
 		<div class="text-center">
 			<form method="post" action="BJPlayController">
 			<input type="hidden" name="action" value="stand">
-				<button type="submit" name="stand" value="stand"
-					class="btn btn-primary">スタンド</button>
+				<button type="submit" name="stand" value="stand" class="btn btn-primary mb-1">スタンド</button>
 			</form>
 			<form method="post" action="BJPlayController">
 				<button type="submit" name="hit" value="hit" class="btn btn-success">もう一枚引く</button>
