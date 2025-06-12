@@ -81,13 +81,11 @@ PlayerBase dealer = table.getDealer();
 		<div class="text-center">
 			<form method="post" action="BJResultController">
 			<input type="hidden" name="action" value="playagain">
-				<button type="submit" name="playagain" value="playagain"
-					class="btn btn-primary">もう一度遊ぶ</button>
+				<button type="submit" name="playagain" value="playagain" class="btn btn-primary mb-1">もう一度遊ぶ</button>
 			</form>
 			<form method="post" action="BJResultController">
 			<input type="hidden" name="action" value="mainmenu">
-				<button type="submit" name="backtomenu" value="backtomenu"
-					class="btn btn-secondary">メニューに戻る</button>
+				<button type="submit" name="backtomenu" value="backtomenu" class="btn btn-secondary ">メニューに戻る</button>
 
 			</form>
 			
