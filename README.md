@@ -41,13 +41,13 @@ css適応させたい
 - [x] chip設計
 - chip実装
     - model
-          - [ ] DB
-          - [ ] Entity
-          - [ ] DTO
-          - [ ] DAO
-      - view
-          - [ ] userinfo
-          - [ ] admininfo
+      - [x] DB
+      - [ ] Entity
+      - [ ] DTO
+      - [ ] DAO
+    - view
+        - [ ] userinfo
+        - [ ] admininfo
 
 ---
 ### 6/11 夕会FB

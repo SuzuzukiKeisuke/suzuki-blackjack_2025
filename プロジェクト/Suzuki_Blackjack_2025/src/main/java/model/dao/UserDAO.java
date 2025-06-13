@@ -196,8 +196,11 @@ public class UserDAO {
 			case 2:
 				sql = "UPDATE users SET user_drawcount = user_drawcount + 1 WHERE user_id = ?";
 				break;
+			case 3:
+				sql = "UPDATE users SET user_bjcount = user_bjcount + 1 WHERE user_id = ?";
+				break;
 			default:
-				System.out.println("UserDAO/result/resultCodeエラー 0~2以外の数値 -> " + result.getResultCode());
+				System.out.println("UserDAO/result/resultCodeエラー 0~3以外の数値 -> " + result.getResultCode());
 				return 0;
 			}
 			ps = con.prepareStatement(sql);

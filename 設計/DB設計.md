@@ -1,4 +1,8 @@
 # DB設計
+## blackjack_develop データベース
+### usersテーブル
+
+
 ## blackjack データベース
 ### users テーブル
 | フィールド名 | 型 |
@@ -80,8 +84,43 @@ result_codeの値は、そのレコードが示す勝負結果が
 であったことを示します。
 
 
+### 開発用DBの作成
+```SQL
+-- 開発用データベースの作成
+CREATE TABLE blackjack_develop;
+CREATE TABLE users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_name VARCHAR(20) NOT NULL,
+    user_password VARCHAR(20) NOT NULL,
+    user_isadmin BOOLEAN NOT NULL DEFAULT FALSE,
+    user_wincount INT NOT NULL DEFAULT 0,
+    user_losecount INT NOT NULL DEFAULT 0,
+    user_drawcount INT NOT NULL DEFAULT 0
+);
+CREATE TABLE results (
+    result_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    result_code TINYINT NOT NULL,
+    result_created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+);
+
+-- テーブルをコピー
+INSERT INTO blackjack_develop.users
+SELECT * FROM blackjack.users;
+INSERT INTO blackjack_develop.results
+SELECT * FROM blackjack.results;
+
+-- カラムの追加
+ALTER TABLE users ADD COLUMN user_bjcount INT NOT NULL DEFAULT 0 AFTER user_drawcount;
+ALTER TABLE users ADD COLUMN user_chip INT NOT NULL DEFAULT 100 AFTER user_bjcount;
+ALTER TABLE results ADD COLUMN result_winchips INT NOT NULL DEFAULT 0 AFTER result_created_at;
+
+```
+
 
 ### 更新履歴
+2025/06/13 v1.4 鈴木 開発用DBを作成
 2025/06/03 v1.3 鈴木 usersの設計を変更
 2205/06/02 v1.2 鈴木 データベース名を追加 テーブル/データベースを明記
 2025/05/30 v1.1 鈴木 usersの権限管理が定義されていなかった点を修正

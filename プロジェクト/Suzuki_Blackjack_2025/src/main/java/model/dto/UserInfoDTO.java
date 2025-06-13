@@ -6,7 +6,7 @@ public class UserInfoDTO {
 	private int winCount;
 	private int loseCount;
 	private int drawCount;
-	private float winRate;
+//	private float winRate;
 	
 	public UserInfoDTO(int userId, String userName, int winCount, int loseCount, int drawCount){
 		this.userId = userId;
@@ -14,8 +14,8 @@ public class UserInfoDTO {
 		this.winCount = winCount;
 		this.loseCount = loseCount;
 		this.drawCount = drawCount;
-		int total = winCount + loseCount + drawCount;
-		this.winRate = (total == 0 ? 0 : ((float)winCount / total * 100));
+//		int total = winCount + loseCount + drawCount;
+//		this.winRate = (total == 0 ? 0 : ((float)winCount / total * 100));
 		
 	}
 
@@ -59,9 +59,8 @@ public class UserInfoDTO {
 		this.drawCount = drawCount;
 	}
 	
-	public float getWinRate() {
-		return winRate;
-	}
-	
-	// setWinRate()はあえて作成しない
+//	public float getWinRate() {
+//		return winRate;
+//	}
+
 }

@@ -9,7 +9,6 @@ public class UserAccountDTO {
 	public UserAccountDTO(int userId, String userName, boolean userIsAdmin) {
 		this.userId = userId;
 		this.userName = userName;
-//		this.userPassword = userPassword;
 		this.userIsAdmin = userIsAdmin;
 	}
 	public String getUserName() {
@@ -18,12 +17,6 @@ public class UserAccountDTO {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-//	public String getUserPassword() {
-//		return userPassword;
-//	}
-//	public void setUserPassword(String userPassword) {
-//		this.userPassword = userPassword;
-//	}
 	public boolean isUserIsAdmin() {
 		return userIsAdmin;
 	}
