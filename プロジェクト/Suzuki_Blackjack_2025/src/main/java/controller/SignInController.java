@@ -45,8 +45,8 @@ public class SignInController extends HttpServlet {
 			rd = request.getRequestDispatcher("main-menu.jsp");
 		
 		}else {// ログイン失敗
-			request.setAttribute("message", "ログイン認証に失敗しました");
-			rd = request.getRequestDispatcher("login.jsp");
+			request.setAttribute("message", "ユーザー名が既に使われています");
+			rd = request.getRequestDispatcher("sign-up.jsp");
 		}
 		rd.forward(request, response);
 	}

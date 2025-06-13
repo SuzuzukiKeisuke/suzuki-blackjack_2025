@@ -13,9 +13,18 @@
 <body class="m-3">
 	<h1 class="text-center">BLACKJACK</h1>
 	<h2 class="text-center">新規ユーザー登録</h2>
+
 	<div class="d-flex justify-content-center">
+
 		<div class="text-start">
-	
+		<%
+			String message = (String)request.getAttribute("message");
+			if(message!=null){
+%>
+			<p><%= message %></p>
+<%		
+			}
+%>
 			<form action="SignInController" method="post">
 				<label for=inputUserName>ユーザー名</label></br> 
 				<input type="text" id="inputUserName" name="userName" class="mb-3" required></br>
