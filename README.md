@@ -28,7 +28,6 @@
 - [ ] セッションの有り無しで画面にアクセスできるか
     -> コントローラの頭でセッションに関する認証を行う
 ---
-css適応させたい
 ### 6/11 夕会FB
 **BJPlayController**
 
@@ -41,10 +40,18 @@ css適応させたい
 - [x] chip設計
 - chip実装
     - model
-      - [x] DB
-      - [ ] Entity
-      - [ ] DTO
-      - [ ] DAO
+      - [x] DB - result_develop
+      - [x] Entity
+          - Result
+          - User
+          - UserStats
+      - [x] DTO
+          - UserInfoDTO
+      - [x] Utility
+          - UserConverter
+      - [x] DAO
+      - [ ] Service
+          - UserRankingService
     - view
         - [ ] userinfo
         - [ ] admininfo

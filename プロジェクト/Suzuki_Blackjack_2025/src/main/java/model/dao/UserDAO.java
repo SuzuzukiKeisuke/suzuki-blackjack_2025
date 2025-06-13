@@ -215,24 +215,54 @@ public class UserDAO {
 		return num;
 	}
 
-	// 勝率トップ5を取得する
-	public List<UserStats> getUserStatsList() {
-		UserStats userstats = null;
+//	// 勝率トップ5を取得する(旧版)
+//	public List<UserStats> getUserStatsList() {
+//		UserStats userstats = null;
+//		List<UserStats> userStatsList = new ArrayList<UserStats>();
+//		System.out.println("DB接続@UserDAO/getUserStatsList");
+//		try {
+//			con = DatabaseUtil.getConnection();
+//			String sql = "SELECT *, user_wincount / IFNULL((user_wincount + user_losecount + user_drawcount), 0) AS ratio FROM users ORDER BY ratio DESC LIMIT 5";
+//			ps = con.prepareStatement(sql);
+//			rs = ps.executeQuery();
+//			while (rs.next()) {
+//				userstats = new UserStats();
+//				userstats.setUserId(rs.getInt("user_id"));
+//				userstats.setUserName(rs.getString("user_name"));
+//				userstats.setWinCount(rs.getInt("user_wincount"));
+//				userstats.setLoseCount(rs.getInt("user_losecount"));
+//				userstats.setDrawCount(rs.getInt("user_drawcount"));
+//				userStatsList.add(userstats);
+//			}
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			DatabaseUtil.close(rs, ps, con);
+//			System.out.println("DB切断@UserDAO/getUserStatsList");
+//		}
+//		return userStatsList;
+//	}
+	
+	// チップ所持数トップ5を取得する
+	public List<UserStats> getUserChipRanking() {
+		UserStats userStats = null;
 		List<UserStats> userStatsList = new ArrayList<UserStats>();
 		System.out.println("DB接続@UserDAO/getUserStatsList");
 		try {
 			con = DatabaseUtil.getConnection();
-			String sql = "SELECT *, user_wincount / IFNULL((user_wincount + user_losecount + user_drawcount), 0) AS ratio FROM users ORDER BY ratio DESC LIMIT 5";
+			String sql = "SELECT * FROM users ORDER BY user_chip DESC LIMIT 5";
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				userstats = new UserStats();
-				userstats.setUserId(rs.getInt("user_id"));
-				userstats.setUserName(rs.getString("user_name"));
-				userstats.setWinCount(rs.getInt("user_wincount"));
-				userstats.setLoseCount(rs.getInt("user_losecount"));
-				userstats.setDrawCount(rs.getInt("user_drawcount"));
-				userStatsList.add(userstats);
+				userStats = new UserStats();
+				userStats.setUserId(rs.getInt("user_id"));
+				userStats.setUserName(rs.getString("user_name"));
+				userStats.setWinCount(rs.getInt("user_wincount"));
+				userStats.setLoseCount(rs.getInt("user_losecount"));
+				userStats.setDrawCount(rs.getInt("user_drawcount"));
+				userStats.setBjCount(rs.getInt("user_bjcount"));
+				userStats.setChip(rs.getInt("user_chip"));
+				userStatsList.add(userStats);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -260,6 +290,8 @@ public class UserDAO {
 				userStats.setWinCount(rs.getInt("user_wincount"));
 				userStats.setLoseCount(rs.getInt("user_losecount"));
 				userStats.setDrawCount(rs.getInt("user_drawcount"));
+				userStats.setBjCount(rs.getInt("user_bjcount"));
+				userStats.setChip(rs.getInt("user_chip"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
