@@ -25,6 +25,7 @@ public class UserConverter {
 						stats.getBjCount(),
 						stats.getWinCount(),
 						stats.getLoseCount(),
-						stats.getDrawCount());
+						stats.getDrawCount(),
+						stats.getChip());
 	}
 }

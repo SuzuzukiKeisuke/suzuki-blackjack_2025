@@ -39,7 +39,7 @@ public class UserRankingService {
 		List<UserInfoDTO> userInfoList = new ArrayList<UserInfoDTO>();
 		
 		// 勝率トップ5を取得する
-		List<UserStats> userStatsList = uDAO.getUserStatsList();
+		List<UserStats> userStatsList = uDAO.getUserChipRanking();
 		
 		// データの移し替え
 		userStatsList.forEach(stats -> userInfoList.add(UserConverter.toUserInfoDTO(stats)));

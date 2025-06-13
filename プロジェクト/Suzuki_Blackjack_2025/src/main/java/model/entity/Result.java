@@ -12,7 +12,7 @@ public class Result {
 	public Result(int userId, int resultCode, int resultWin) {
 		this.userId = userId;
 		this.resultCode = resultCode;
-		this.resultWin = resultWin;
+		this.resultWin = resultWin; // 勝ったチップの枚数
 	}
 	public int getUserId() {
 		return userId;

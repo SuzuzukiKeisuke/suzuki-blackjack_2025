@@ -7,16 +7,17 @@ public class UserInfoDTO {
 	private int winCount;
 	private int loseCount;
 	private int drawCount;
+	private int chip;
 	
-	public UserInfoDTO(int userId, String userName, int bjCount, int winCount, int loseCount, int drawCount){
+	public UserInfoDTO(int userId, String userName, int bjCount, 
+			int winCount, int loseCount, int drawCount, int chip){
 		this.userId = userId;
 		this.userName = userName;
 		this.bjCount = bjCount;
 		this.winCount = winCount;
 		this.loseCount = loseCount;
 		this.drawCount = drawCount;
-
-		
+		this.chip = chip;
 	}
 
 	public int getUserId() {
@@ -67,6 +68,12 @@ public class UserInfoDTO {
 		this.drawCount = drawCount;
 	}
 	
-
+	public int getChip() {
+		return chip;
+	}
+	
+	public void setChip(int chip) {
+		this.chip = chip;
+	}
 
 }
