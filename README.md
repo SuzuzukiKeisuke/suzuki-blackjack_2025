@@ -31,6 +31,26 @@
 css適応させたい
 ### 6/11 夕会FB
 **BJPlayController**
+
+---
+### 6/16
+
+
+---
+### 6/13
+- [x] chip設計
+- chip実装
+    - model
+          - [ ] DB
+          - [ ] Entity
+          - [ ] DTO
+          - [ ] DAO
+      - view
+          - [ ] userinfo
+          - [ ] admininfo
+
+---
+### 6/11 夕会FB
 - try-catch部分 
     - AIを使うのは最後の手段
     - デバッグをする
