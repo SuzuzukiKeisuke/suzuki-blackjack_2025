@@ -1,7 +1,26 @@
 # DB設計
 ## blackjack_develop データベース
-### usersテーブル
+### users テーブル
+| フィールド名 | 型 |
+|---------------|--------------|
+| user_id (PK)  | INT          |
+| user_name     | VARCHAR(20)  |
+| user_password | VARCHAR(20)  |
+| user_isadmin  | BOOLEAN      |
+| user_wincount | INT          |
+| user_losecount| INT          |
+| user_drawcount| INT          |
+| user_bjcount  | INT          |
+| user_chip     | INT          |
 
+### results テーブル
+| フィールド名 | 型 |
+|-------------------|-----------|
+| result_id (PK)    | INT       |
+| user_id (FK)      | INT       |
+| result_code       | TINYINT   |
+| result_created_at | TIMESTAMP |
+| result_win        | INT       |
 
 ## blackjack データベース
 ### users テーブル
