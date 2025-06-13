@@ -41,7 +41,9 @@ public class MainMenuController extends HttpServlet {
 		
 		// ユーザの戦績/ランキングの表示用
 		UserRankingService urs = new UserRankingService();
+		// ログインしているユーザー一人分の情報
 		request.setAttribute("userInfo", urs.getUserInfo(loginUser.getUserId()));
+		// DB全体のランキング情報
 		request.setAttribute("userRanking", urs.getUserRanking());
 		
 		// ユーザ情報画面へ
