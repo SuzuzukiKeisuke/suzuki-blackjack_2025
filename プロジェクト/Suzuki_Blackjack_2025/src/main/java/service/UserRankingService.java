@@ -11,6 +11,8 @@ import util.UserConverter;
 
 public class UserRankingService {
 	UserDAO uDAO = new UserDAO();
+	
+	// ユーザ一人分のデータを取得
 	public UserInfoDTO getUserInfo(int userId) {
 		
 		// dbアクセス
@@ -28,7 +30,7 @@ public class UserRankingService {
 	
 	
 	
-	
+	// 勝率上位五人のリストを取得
 	public List<UserInfoDTO> getUserRanking(){
 		// usersテーブルのDAO
 		
