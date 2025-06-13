@@ -3,7 +3,6 @@ package model.dto;
 public class UserAccountDTO {
 	private int userId;
 	private String userName;
-	// private String userPassword;
 	private boolean userIsAdmin;
 	
 	public UserAccountDTO(int userId, String userName, boolean userIsAdmin) {

@@ -22,6 +22,7 @@ public class UserConverter {
 		return new UserInfoDTO(
 						stats.getUserId(),
 						stats.getUserName(),
+						stats.getBjCount(),
 						stats.getWinCount(),
 						stats.getLoseCount(),
 						stats.getDrawCount());
