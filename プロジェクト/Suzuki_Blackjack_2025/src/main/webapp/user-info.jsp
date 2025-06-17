@@ -1,6 +1,6 @@
-<%@ page import="model.dto.UserAccountDTO" %>
-<%@ page import="model.dto.UserInfoDTO" %>
-<%@ page import="java.util.List" %>
+<%@ page import="model.dto.UserAccountDTO"%>
+<%@ page import="model.dto.UserInfoDTO"%>
+<%@ page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,38 +11,46 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
 	crossorigin="anonymous">
+<link rel="stylesheet" href="css/setting.css">
 <title>ユーザー情報</title>
 </head>
 <body class="m-3">
-<%
-	UserAccountDTO loginUser = (UserAccountDTO)session.getAttribute("loginUser"); 
-%>
-	<header class="d-flex justify-content-end">
-		<form action="MainMenuController" method="get" align="right">
-			<input type="submit" value="ログアウト" class="btn btn-outline-primary btn-sm">
-			<%= loginUser.getUserName()%>
+	<%
+	UserAccountDTO loginUser = (UserAccountDTO) session.getAttribute("loginUser");
+	%>
+	<header class="d-flex justify-content-end me-3">
+		<form action="MainMenuController" method="get" align="right"
+			class="me-3">
+			<input type="submit" value="ログアウト"
+				class="btn btn-outline-light btn-sm" />
 		</form>
+		<%=loginUser.getUserName()%>
 	</header>
 	<hr>
-	<h1 class="mb-3">ユーザー情報</h1>
 	<div class="row">
-		<div class="col-8 ">
+		<div class="col-6">
+		<div class="ms-5">
 			<!--XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
 			<!--左側の要素-->
-			<%	// コントローラからオブジェクトを受け取る
+			<h1 class="mb-3">ユーザー情報</h1>
+			<%
+			// コントローラからオブジェクトを受け取る
 			UserInfoDTO userInfo = null;
 			List<UserInfoDTO> userRanking = null;
 			Object obj1 = request.getAttribute("userInfo");
 			Object obj2 = request.getAttribute("userRanking");
-			if(obj1!=null){userInfo = (UserInfoDTO)obj1;}
-			if(obj2!=null){userRanking = (List<UserInfoDTO>)obj2;}
+			if (obj1 != null) {
+				userInfo = (UserInfoDTO) obj1;
+			}
+			if (obj2 != null) {
+				userRanking = (List<UserInfoDTO>) obj2;
+			}
 			%>
-			
-			<h2>あなたの戦績</h2>
-			<table>
+
+			<table class="table-format mb-5">
 				<thead>
 					<tr>
-						<th>ユーザー名</th>		
+						<th>ユーザー名</th>
 						<th>勝ち</th>
 						<th>負け</th>
 						<th>引き分け</th>
@@ -51,27 +59,27 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td><%=userInfo.getUserName() %></td>
-						<td><%=userInfo.getWinCount() %></td>
-						<td><%=userInfo.getLoseCount() %></td>
-						<td><%=userInfo.getDrawCount() %></td>
-						<td><%=userInfo.getWinRate() %></td>
+						<td class="bold-character"><%=userInfo.getUserName()%></td>
+						<td><%=userInfo.getWinCount()%></td>
+						<td><%=userInfo.getLoseCount()%></td>
+						<td><%=userInfo.getDrawCount()%></td>
+						<td class="bold-character"><%=String.format("%.2f", userInfo.getWinRate())%>%</td>
 					</tr>
 				</tbody>
 			</table>
 			<form action="UserInfoController" method="post">
-				<input type="submit" value="ユーザー設定へ" class="btn btn-primary mb-1">
+				<input type="submit" value="ユーザー設定へ" class="btn btn-primary mb-3">
 			</form>
 			<form action="UserInfoController" method="get">
 				<input type="submit" value="メニューに戻る" class="btn btn-secondary">
 			</form>
 		</div>
-
-		<div class="col-4">
+		</div>
+		<div class="col-6">
 			<!--XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
 			<!--右側の要素-->
 			<h2>勝率ランキング</h2>
-			<table>
+			<table class="table-ranking">
 				<thead>
 					<tr>
 						<th>ランク</th>
@@ -80,20 +88,19 @@
 					</tr>
 				</thead>
 				<tbody>
-<%
+					<%
 					UserInfoDTO uiDTO;
-					for(int i=0; i<userRanking.size(); i++){
+					for (int i = 0; i < userRanking.size(); i++) {
 						uiDTO = userRanking.get(i);
-						
-%>
+					%>
 					<tr>
-						<td><%=i+1 %></td>
+						<td><%=i + 1%></td>
 						<td><%=uiDTO.getUserName()%></td>
 						<td><%=String.format("%.2f", uiDTO.getWinRate())%>%</td>
 					</tr>
-<%
+					<%
 					}
-%>
+					%>
 
 				</tbody>
 			</table>

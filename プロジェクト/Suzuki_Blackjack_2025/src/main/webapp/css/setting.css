@@ -1,0 +1,50 @@
+body{
+	background-color: rgb(45, 64, 46);
+	color: white;
+}
+
+
+
+.table-format th, .table-format td {
+    padding: 8px 2vw;
+    text-align: center;
+}
+
+.table-format thead {
+    background-color: rgb(31, 129, 89);
+    color: white;
+}
+
+.table-format tbody{
+    background-color: rgb(43, 102, 26);
+}
+
+.table-format .bold-character {
+	font-weight: bolder;
+	font-size: larger;
+}
+
+
+
+.table-ranking th, .table-ranking td {
+    padding: 8px 4vw;
+    text-align: center;
+}
+
+.table-ranking thead {
+    background-color: rgb(31, 129, 89);
+    color: white;
+}
+
+.table-ranking tbody tr:nth-child(even) {
+    background-color: rgb(43, 102, 26);
+}
+
+.table-ranking tbody tr:nth-child(odd) {
+    background-color: rgb(27, 63, 16);
+}
+
+.table-ranking tbody tr:nth-child(1) {
+	font-weight: bolder;
+	font-size: larger;
+}
