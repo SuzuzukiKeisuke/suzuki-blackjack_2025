@@ -22,7 +22,6 @@
 			<input type="submit" value="ログアウト" class="btn btn-outline-primary btn-sm">
 			<%= loginUser.getUserName()%>
 		</form>
-	<hr>
 	</header>
 	<hr>
 	<h1 class="mb-3">ユーザー情報</h1>

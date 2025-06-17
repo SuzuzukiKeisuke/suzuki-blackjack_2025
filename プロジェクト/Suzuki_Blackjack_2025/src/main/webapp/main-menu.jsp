@@ -17,8 +17,9 @@
 		<input type="submit" value="ログアウト" class="btn btn-outline-secondary btn-sm"/>
 		<%= loginUser.getUserName()%>
 	</form>
-	<hr>
+	
 </header>
+	<hr>
 <h1 class="mb-3">メインメニュー</h1>
 <form action="BJStartController" method="post" >
 	<input type="submit" value="ブラックジャックをプレイ" class="btn btn-primary mb-1">

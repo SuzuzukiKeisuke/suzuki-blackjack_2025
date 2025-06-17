@@ -21,8 +21,9 @@
 		<input type="submit" value="ログアウト" class="btn btn-outline-primary btn-sm">
 		<%= loginUser.getUserName()%>
 	</form>
-	<hr>
+<hr>
 </header>
+	<hr>
 	<h1>ユーザー設定画面</h1>
 	<h2>アカウント名の更新</h2>
 	<% if(sobj != null){ %>
