@@ -1,0 +1,14 @@
+body{
+	background-color: rgb(45, 64, 46);
+	color: white;
+}
+
+
+.titleimage { /*タイトル画像*/
+	width: 60vw;
+	max-width: 600px;
+	height: auto;
+	display: block;
+	margin: 20px auto;
+}
+
