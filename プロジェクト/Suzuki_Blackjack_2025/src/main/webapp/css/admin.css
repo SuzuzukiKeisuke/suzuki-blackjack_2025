@@ -1,0 +1,50 @@
+body{
+	background-color: rgb(103, 109, 29);
+	color: white;
+}
+
+
+
+.table-format th, .table-format td {
+    padding: 8px 2vw;
+    text-align: center;
+}
+
+.table-format thead {
+    background-color: rgb(31, 129, 89);
+    color: white;
+}
+
+.table-format tbody{
+    background-color: rgb(43, 102, 26);
+}
+
+.table-format .bold-character {
+	font-weight: bolder;
+	font-size: larger;
+}
+
+
+
+.table-list th, .table-list td {
+    padding: 8px 4vw;
+    text-align: center;
+}
+
+.table-list thead {
+    background-color: rgb(77, 78, 52);
+    color: white;
+}
+
+.table-list tbody tr:nth-child(even) {
+    background-color: rgb(143, 150, 65);
+}
+
+.table-list tbody tr:nth-child(odd) {
+    background-color: rgb(114, 109, 54);
+}
+
+.table-list tbody tr:nth-child(1) {
+	font-weight: bolder;
+	font-size: larger;
+}

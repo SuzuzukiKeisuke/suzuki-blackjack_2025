@@ -11,10 +11,24 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
 	crossorigin="anonymous">
-	<link rel="stylesheet" href="css/setting.css">
+	<link rel="stylesheet" href="css/admin.css">
 <title>管理者画面</title>
 </head>
-<body>
+<body class="m-3">
+
+	<%
+	UserAccountDTO loginUser = (UserAccountDTO) session.getAttribute("loginUser");
+	%>
+	<header class="d-flex justify-content-end me-3">
+		<form action="MainMenuController" method="get" align="right"
+			class="me-3">
+			<input type="submit" value="ログアウト"
+				class="btn btn-outline-light btn-sm" />
+		</form>
+		<%=loginUser.getUserName()%>
+	</header>
+
+	<hr>
 	<%
 	// Controllerからユーザーリストを受け取る
 	List<UserAccountDTO> userList = new ArrayList<UserAccountDTO>();
@@ -52,7 +66,7 @@
 				<td><%=user.showIsAdmin()%></td>
 				<td><form action="AdminOptionController" method="post">
 						<input type="hidden" value=<%=user.getUserId()%> name="userId">
-						<input type="submit" class="btn btn-primary ms-1" value="設定">
+						<input type="submit" class="btn btn-warning ms-1" value="設定">
 					</form></td>
 			</tr>
 			<%

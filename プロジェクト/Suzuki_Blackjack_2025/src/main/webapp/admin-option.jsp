@@ -9,7 +9,7 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="css/setting.css">
+<link rel="stylesheet" href="css/admin.css">
 <title>管理者画面-アカウント設定</title>
 </head>
 <body class="m-3">
@@ -43,7 +43,7 @@
 					<label for="inputUserPassword">パスワード</label> <input type="password"
 						id="inputUserPassword" class="mb-5" name="userPassword">
 				</div>
-				<input type="submit" class="btn btn-primary mb-3 px-4" value="更新">
+				<input type="submit" class="btn btn-warning mb-3 px-4" value="更新">
 		</form>
 
 		<form action="AdminSettingController" method="post">
