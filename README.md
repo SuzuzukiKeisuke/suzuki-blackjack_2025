@@ -35,11 +35,23 @@
 ### 6/18
 - [x] CSS
 - チップ実装
-    - model
-      -  [ ] UserRankingService
-    - view
-        - [ ] userinfo
-        - [ ] admininfo
+#### フロント
+- チップをベットする機能
+- チップを計算して払い戻す機能
+#### バック
+##### users
+- 所持チップ数を保持
+- ブラックジャックだったかの情報を追加
+##### results
+- ラウンドで得たチップ数を保持
+
+#### いまやること
+- model
+  - [x] UserRankingService ランキングをチップ所持数基準に
+  - [x] UserAccountDTO ヘッダーに所持チップ表示用にuserChipを保持するように
+  - view
+    - [ ] userinfo
+    - [ ] admininfo
 ---
 ### 6/17 CSS
 - [x] ログインログアウト
@@ -47,6 +59,9 @@
 - [x] ブラックジャック
 - [x] 管理者画面
 - css適用させる
+
+トランプのマーク取得リンク
+https://chicodeza.com/freeitems/torannpu-illust.html
 
 ---
 ### 6/16
