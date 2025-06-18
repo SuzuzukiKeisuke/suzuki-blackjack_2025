@@ -11,6 +11,7 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
 	crossorigin="anonymous">
+	<link rel="stylesheet" href="css/setting.css">
 <title>管理者画面</title>
 </head>
 <body>
@@ -23,7 +24,7 @@
 		userList = (ArrayList<UserAccountDTO>) obj;
 	}
 	%>
-	<h1>管理者画面</h1>
+	<h1 class="text-center my-3">管理者画面</h1>
 	<%
 	if (sobj != null) {
 	%>
@@ -31,12 +32,13 @@
 	<%
 	}
 	%>
-	<table>
+	<table class="table-list mx-auto mb-3">
 		<thead>
 			<tr>
 				<th>userId</th>
 				<th>userName</th>
 				<th>userIdAdmin</th>
+				<th>アカウント設定へ</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -44,13 +46,13 @@
 			// ArrayListで渡されたuserDTOの内容を一覧できるようにする
 			for (UserAccountDTO user : userList) {
 			%>
-			<tr>
+			<tr  class="text-center">
 				<td><%=user.getUserId()%></td>
 				<td><%=user.getUserName()%></td>
 				<td><%=user.showIsAdmin()%></td>
 				<td><form action="AdminOptionController" method="post">
 						<input type="hidden" value=<%=user.getUserId()%> name="userId">
-						<input type="submit" class="btn btn-primary" value="設定">
+						<input type="submit" class="btn btn-primary ms-1" value="設定">
 					</form></td>
 			</tr>
 			<%
@@ -61,7 +63,7 @@
 
 		</tbody>
 	</table>
-	<form action="AdminMenuController" method="get">
+	<form action="AdminMenuController" method="get" class="d-flex justify-content-center" >
 		<input type="submit" class="btn btn-secondary" value="メインメニューに戻る">
 	</form>
 	<script

@@ -9,12 +9,17 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
 	crossorigin="anonymous">
+<link
+	href="css/title.css"
+	rel="stylesheet">
 <title>ログイン画面</title>
 </head>
+
+
 <body class="m-3">
-	<h1 class="text-center">BLACKJACK</h1>
-	<h2 class="text-center">ユーザーログイン</h2>
-	<div class="d-flex justify-content-center">
+	<img src="img/BLACKJACK_cropped.png" class="titleimage">
+	<h2 class="text-center text">ログイン</h2>
+	<div class="d-flex justify-content-center text">
 <!--		要素全体を中央揃え-->
 			<div class="text-start">
 <!--			テキストを左揃え-->

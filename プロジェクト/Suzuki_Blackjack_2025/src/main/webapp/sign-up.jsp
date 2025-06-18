@@ -8,14 +8,28 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
 	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
 	crossorigin="anonymous">
+<link
+	href="css/title.css"
+	rel="stylesheet">
 <title>ユーザー登録</title>
 </head>
+
+
 <body class="m-3">
-	<h1 class="text-center">BLACKJACK</h1>
+	<img src="img/BLACKJACK_cropped.png" class="titleimage">
 	<h2 class="text-center">新規ユーザー登録</h2>
+
 	<div class="d-flex justify-content-center">
+
 		<div class="text-start">
-	
+		<%
+			String message = (String)request.getAttribute("message");
+			if(message!=null){
+%>
+			<p><%= message %></p>
+<%		
+			}
+%>
 			<form action="SignInController" method="post">
 				<label for=inputUserName>ユーザー名</label></br> 
 				<input type="text" id="inputUserName" name="userName" class="mb-3" required></br>
