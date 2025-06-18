@@ -18,6 +18,8 @@ if(obj!=null){
 PlayerBase player = table.getPlayer();
 PlayerBase dealer = table.getDealer();
 
+// トランプマーク用
+String[] links = {"img/spade.png","img/diamond.png","img/clover.png","img/heart.png"};
 %>
 <!DOCTYPE html>
 <html>
@@ -32,13 +34,11 @@ PlayerBase dealer = table.getDealer();
 <title>ブラックジャック</title>
 </head>
 <body>
-
-
 	<div class="container py-4">
 
 
 
-		<h1 class="text-center mb-4">ブラックジャックプレイ画面</h1>
+		<h1 class="text-center mb-4">あなたの手番です</h1>
 
 		<!-- ディーラー -->
 		<h2 class="text-center">ディーラー : <%=dealer.getCards().get(0).getCardValue()%></h2>
@@ -51,7 +51,11 @@ PlayerBase dealer = table.getDealer();
 			<%
 				} else {
 			%>
-			<div class="card"><%=dealer.getCards().get(i).getCardLabel()%></div>
+			<div class="card">
+				<div class="align-self-start ps-2"><%=dealer.getCards().get(i).getCardLabel()%></div>
+				<div class="align-self-center"><img src=<%=links[dealer.getCards().get(i).getCardMark() - 1] %>></div>
+				<div class="align-self-end upside-down ps-2"><%=dealer.getCards().get(i).getCardLabel()%></div>
+			</div>
 			<%
 				}
 			}
@@ -64,7 +68,11 @@ PlayerBase dealer = table.getDealer();
 			<%
 			for (int i = 0; i < player.getCards().size(); i++) {
 			%>
-			<div class="card"><%=player.getCards().get(i).getCardLabel()%></div>
+			<div class="card">
+				<div class="align-self-start ps-2"><%=player.getCards().get(i).getCardLabel()%></div>
+				<div class="align-self-center"><img src=<%=links[player.getCards().get(i).getCardMark() - 1] %>></div>
+				<div class="align-self-end upside-down ps-2"><%=player.getCards().get(i).getCardLabel()%></div>
+			</div>
 			<%
 			}
 			%>

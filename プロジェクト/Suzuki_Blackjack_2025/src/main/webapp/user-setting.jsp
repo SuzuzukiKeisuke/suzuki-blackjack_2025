@@ -30,39 +30,40 @@
 	<h1 align="center" class="mb-3">アカウント名の更新</h1>
 
 	<div class="d-flex flex-column align-items-center">
-			<%
-			if (sobj != null) {
-			%>
-			<p><%=(String) sobj%></p>
-			<%
-			}
-			%>
-			<form action="UserSettingController" method="post" >
-				<div class="d-flex flex-column align-items-center">
+		<%
+		if (sobj != null) {
+		%>
+		<p><%=(String) sobj%></p>
+		<%
+		}
+		%>
+		<form action="UserSettingController" method="post">
+			<div class="d-flex flex-column align-items-center">
 				<input type="hidden" name="dowhat" value="update">
 				<div class="d-flex flex-column">
-				<label for="inputUserName" required>新しいユーザー名</label>
-				<input type="text" id="inputUserName" class="mb-3" name="userName" value=<%=loginUser.getUserName()%> required>
+					<label for="inputUserName" required>新しいユーザー名</label> <input
+						type="text" id="inputUserName" class="mb-3" name="userName"
+						value=<%=loginUser.getUserName()%> required>
 				</div>
 				<div class="d-flex flex-column">
-				<label for="inputUserPassword">パスワード</label>
-				<input type="password" id="inputUserPassword"  class="mb-5" name="userPassword">
+					<label for="inputUserPassword">パスワード</label> <input type="password"
+						id="inputUserPassword" class="mb-5" name="userPassword">
 				</div>
 				<input type="submit" class="btn btn-primary mb-3 px-4" value="更新">
-			</form>
-			<form action="UserSettingController" method="get">
-				<input type="submit" class="btn btn-secondary mb-5 px-4" value="戻る">
-			</form>
-		</div>
+		</form>
+		<form action="UserSettingController" method="get">
+			<input type="submit" class="btn btn-secondary mb-5 px-4" value="戻る">
+		</form>
 	</div>
-			<hr>
-			<div class="d-flex flex-column align-items-center">
-			<h2 class="mb-5">アカウント削除</h2>
-			<form action="UserSettingController" method="post">
-				<input type="hidden" name="dowhat" value="delete"> <input
-					type="submit" value="アカウント削除" class="btn btn-danger">
-			</form>
-			</div>
+	</div>
+	<hr>
+	<div class="d-flex flex-column align-items-center">
+		<h2 class="mb-5">アカウント削除</h2>
+		<form action="UserSettingController" method="post">
+			<input type="hidden" name="dowhat" value="delete"> <input
+				type="submit" value="アカウント削除" class="btn btn-danger">
+		</form>
+	</div>
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

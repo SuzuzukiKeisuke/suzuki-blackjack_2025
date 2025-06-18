@@ -79,7 +79,7 @@
 			<!--XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
 			<!--右側の要素-->
 			<h2>勝率ランキング</h2>
-			<table class="table-ranking">
+			<table class="table-list">
 				<thead>
 					<tr>
 						<th>ランク</th>

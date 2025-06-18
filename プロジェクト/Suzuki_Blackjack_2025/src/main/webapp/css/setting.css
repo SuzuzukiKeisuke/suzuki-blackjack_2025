@@ -26,25 +26,25 @@ body{
 
 
 
-.table-ranking th, .table-ranking td {
+.table-list th, .table-list td {
     padding: 8px 4vw;
     text-align: center;
 }
 
-.table-ranking thead {
+.table-list thead {
     background-color: rgb(31, 129, 89);
     color: white;
 }
 
-.table-ranking tbody tr:nth-child(even) {
+.table-list tbody tr:nth-child(even) {
     background-color: rgb(43, 102, 26);
 }
 
-.table-ranking tbody tr:nth-child(odd) {
+.table-list tbody tr:nth-child(odd) {
     background-color: rgb(27, 63, 16);
 }
 
-.table-ranking tbody tr:nth-child(1) {
+.table-list tbody tr:nth-child(1) {
 	font-weight: bolder;
 	font-size: larger;
 }
