@@ -5,14 +5,16 @@ public class User {
 	private String userName;
 	// private String userPassword;
 	private boolean userIsAdmin;
+	private int userChip;
 	
 	public User() {}
 	
-	public User(int userId, String userName, String userPassword, boolean userIsAdmin) {
+	public User(int userId, String userName, String userPassword, boolean userIsAdmin, int userChip) {
 		this.userId = userId;
 		this.userName = userName;
 		// this.userPassword = userPassword;
 		this.userIsAdmin = userIsAdmin;
+		this.userChip = userChip;
 	}
 
 	public int getUserId() {
@@ -45,6 +47,14 @@ public class User {
 
 	public void setUserIsAdmin(boolean userIsAdmin) {
 		this.userIsAdmin = userIsAdmin;
+	}
+	
+	public int getUserChip() {
+		return userChip;
+	}
+	
+	public void setUserChip(int userChip) {
+		this.userChip = userChip;
 	}
 	
 }

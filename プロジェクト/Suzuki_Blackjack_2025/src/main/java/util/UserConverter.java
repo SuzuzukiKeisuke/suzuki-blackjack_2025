@@ -14,7 +14,8 @@ public class UserConverter {
 						user.getUserId(),
 						user.getUserName(),
 //						user.getUserPassword(),
-						user.isUserIsAdmin());
+						user.isUserIsAdmin(),
+						user.getUserChip());
 	}
 	
 	
