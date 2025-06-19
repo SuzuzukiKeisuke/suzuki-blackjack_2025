@@ -9,10 +9,9 @@ public class User {
 	
 	public User() {}
 	
-	public User(int userId, String userName, String userPassword, boolean userIsAdmin, int userChip) {
+	public User(int userId, String userName, boolean userIsAdmin, int userChip) {
 		this.userId = userId;
 		this.userName = userName;
-		// this.userPassword = userPassword;
 		this.userIsAdmin = userIsAdmin;
 		this.userChip = userChip;
 	}
@@ -33,13 +32,6 @@ public class User {
 		this.userName = userName;
 	}
 
-//	public String getUserPassword() {
-//		return userPassword;
-//	}
-//
-//	public void setUserPassword(String userPassword) {
-//		this.userPassword = userPassword;
-//	}
 
 	public boolean isUserIsAdmin() {
 		return userIsAdmin;

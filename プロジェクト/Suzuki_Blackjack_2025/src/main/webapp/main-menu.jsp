@@ -20,22 +20,18 @@
 	<%
 	UserAccountDTO loginUser = (UserAccountDTO) session.getAttribute("loginUser");
 	%>
-	<header class="d-flex justify-content-end me-3">
-		<form action="MainMenuController" method="get" align="right"
-			class="me-3">
-			<input type="submit" value="ログアウト"
-				class="btn btn-outline-light btn-sm" />
+	<header class="d-flex justify-content-end align-items-end me-3">
+		<form action="MainMenuController" method="get" align="right"class="me-3">
+			<input type="submit" value="ログアウト" class="btn btn-outline-light btn-sm" />
 		</form>
-		<%=loginUser.getUserName()%>
-
-
+		<div class="me-3"><%=loginUser.getUserName()%></div>
 	</header>
 	<hr>
 
 	<img src="img/BLACKJACK_cropped.png" class="titleimage">
 	<div
 		class="d-flex flex-column justify-content-center align-items-center">
-		<!--<h1 class="mb-3">メインメニュー</h1>-->
+		<div class="mb-3 fw-bold">所持チップ <%=loginUser.getUserChip()%>枚</div>
 		<form action="BJStartController" method="post"
 			class="play-start-button">
 			<input type="submit" value="ブラックジャックをプレイ" class="btn btn-primary">

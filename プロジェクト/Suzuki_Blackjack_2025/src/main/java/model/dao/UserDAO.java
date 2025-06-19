@@ -29,12 +29,12 @@ public class UserDAO {
 			ps.setString(2, password);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				user = new User();
-				user.setUserId(rs.getInt("user_id"));
-				user.setUserName(rs.getString("user_name"));
-				//				user.setUserPassword(rs.getString("user_password"));
-				user.setUserIsAdmin(rs.getBoolean("user_isadmin"));
-			}
+				user = new User(
+				rs.getInt("user_id"),
+				rs.getString("user_name"),
+				rs.getBoolean("user_isadmin"),
+				rs.getInt("user_chip"));
+				}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

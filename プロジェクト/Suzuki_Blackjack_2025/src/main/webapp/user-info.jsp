@@ -54,7 +54,7 @@
 						<th>勝ち</th>
 						<th>負け</th>
 						<th>引き分け</th>
-						<th>勝率</th>
+						<th>チップ</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -63,7 +63,7 @@
 						<td><%=userInfo.getWinCount()%></td>
 						<td><%=userInfo.getLoseCount()%></td>
 						<td><%=userInfo.getDrawCount()%></td>
-						<td class="bold-character"><%=String.format("%.2f", userInfo.getWinRate())%>%</td>
+						<td><%=userInfo.getChip()%></td>
 					</tr>
 				</tbody>
 			</table>
@@ -84,7 +84,7 @@
 					<tr>
 						<th>ランク</th>
 						<th>ユーザー名</th>
-						<th>勝率</th>
+						<th>チップ</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -96,7 +96,7 @@
 					<tr>
 						<td><%=i + 1%></td>
 						<td><%=uiDTO.getUserName()%></td>
-						<td><%=String.format("%.2f", uiDTO.getWinRate())%>%</td>
+						<td><%=uiDTO.getChip()%></td>
 					</tr>
 					<%
 					}
