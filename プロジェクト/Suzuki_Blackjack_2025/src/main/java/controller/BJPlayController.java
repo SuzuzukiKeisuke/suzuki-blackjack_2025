@@ -44,9 +44,10 @@ public class BJPlayController extends HttpServlet {
 			System.out.println("エラー!BJPlayControllerでTableが正常に渡りませんでした");
 			rd = request.getRequestDispatcher("main-menu.jsp");
 		}
-
+		
+/******************************************************************************************/
+		
 		table = (Table) obj;
-
 		if ("stand".equals(action)) {
 			// ディーラーの動作
 			table.doHit(table.getDealer());
@@ -55,8 +56,12 @@ public class BJPlayController extends HttpServlet {
 			// 戦績をDBに記録
 			UserAccountDTO loginUser = (UserAccountDTO) userObj;
 			AccountService as = new AccountService();
-			as.updateStatsAndResult(new Result(loginUser.getUserId(), table.doJudge()));
-
+			as.updateStatsAndResult(new Result(loginUser.getUserId(), table.doJudge(), loginUser.getUserChip() + table.getWin(table.doJudge())));
+			System.out.println("loginUser.getUserChip()"+loginUser.getUserChip());
+			System.out.println("table.getWin(table.doJudge()) : " + table.getWin(table.doJudge()));
+			// sessionを更新
+			session.setAttribute("loginUser", as.getUserById(loginUser.getUserId()));
+			
 			// jspに情報を送る
 			request.setAttribute("resultcode", table.doJudge());
 			rd = request.getRequestDispatcher("blackjack-result.jsp");
@@ -70,9 +75,12 @@ public class BJPlayController extends HttpServlet {
 			// 戦績をDBに記録
 			UserAccountDTO loginUser = (UserAccountDTO) userObj;
 			AccountService as = new AccountService();
-			as.updateStatsAndResult(new Result(loginUser.getUserId(), table.doJudge()));
+			as.updateStatsAndResult(new Result(loginUser.getUserId(), table.doJudge(), loginUser.getUserChip()));
 
+			// sessionを更新
+			session.setAttribute("loginUser", as.getUserById(loginUser.getUserId()));
 			// jspに情報を送る
+			
 			request.setAttribute("resultcode", table.doJudge());
 			rd = request.getRequestDispatcher("blackjack-result.jsp");
 

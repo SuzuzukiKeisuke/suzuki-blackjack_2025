@@ -57,8 +57,8 @@ public class UserDAO {
 			while (rs.next()) {
 				user.setUserId(rs.getInt("user_id"));
 				user.setUserName(rs.getString("user_name"));
-				//					user.setUserPassword(rs.getString("user_password"));
 				user.setUserIsAdmin(rs.getBoolean("user_isadmin"));
+				user.setUserChip(rs.getInt("user_chip"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -159,6 +159,32 @@ public class UserDAO {
 		}
 		return num;
 	}
+	
+	// idを参照してアカウント名を変更する
+		public int updateChipById(int userId, int userChip) {
+			int num = 0;
+			System.out.println("DB接続@UserDAO/updateChipById");
+			try {
+				con = DatabaseUtil.getConnection();
+				String sql = "UPDATE users SET user_chip = ? WHERE user_id = ?";
+				ps = con.prepareStatement(sql);
+				ps.setInt(1, userChip);
+				ps.setInt(2, userId);
+				num = ps.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				DatabaseUtil.close(rs, ps, con);
+				System.out.println("DB切断@UserDAO/updateChipById");
+			}
+			return num;
+		}
+	
+	
+	
+	
+	
+	
 
 	// idを参照してアカウントを削除する
 	public int deleteUserById(int userId) {

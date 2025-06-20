@@ -1,6 +1,6 @@
 
 body {
-	background-color: rgb(45, 64, 46);
+	background-color: rgb(64, 91, 65);
 	color:white;
 	
 }
@@ -33,3 +33,11 @@ img{
 	transform: rotate(180deg);
 }
 
+
+.titleimage { /*タイトル画像*/
+	width: 40vw;
+	max-width: 600px;
+	height: auto;
+	display: block;
+	margin: 20px auto;
+}

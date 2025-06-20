@@ -11,14 +11,15 @@
 	crossorigin="anonymous">
 <link rel="stylesheet" href="css/menu.css">
 
-
-
-
 <title>メインメニュー</title>
 </head>
 <body class="m-3">
 	<%
 	UserAccountDTO loginUser = (UserAccountDTO) session.getAttribute("loginUser");
+	if (loginUser == null) {
+	    response.sendRedirect("login.jsp");
+	    return;
+	}
 	%>
 	<header class="d-flex justify-content-end align-items-end me-3">
 		<form action="MainMenuController" method="get" align="right"class="me-3">
@@ -32,7 +33,7 @@
 	<div
 		class="d-flex flex-column justify-content-center align-items-center">
 		<div class="mb-3 fw-bold">所持チップ <%=loginUser.getUserChip()%>枚</div>
-		<form action="BJStartController" method="post"
+		<form action="BJBetController" method="post"
 			class="play-start-button">
 			<input type="submit" value="ブラックジャックをプレイ" class="btn btn-primary">
 		</form>
