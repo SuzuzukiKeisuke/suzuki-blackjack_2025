@@ -1,5 +1,7 @@
 package model;
 
+import model.entity.ResultCode;
+
 public class Table {
 	private Deck deck;
 	private PlayerBase dealer;
@@ -65,26 +67,26 @@ public class Table {
 	public int doJudge() {
 		if(player.isBurst()) {
 			// ディーラーの勝ち
-			return 0;		
+			return ResultCode.PLAYERLOSE.getResultCode();		
 		}else if(dealer.isBurst()) {
 			if(player.getCardCount() == 2 && player.getHandValue() == 21) {
 				// ブラックジャック
-				return 3;
+				return ResultCode.BLACKJACK.getResultCode();
 			}
 			// プレイヤーの勝ち
-			return 1;
+			return ResultCode.PLAYERWIN.getResultCode();
 		}else if(player.getHandValue() > dealer.getHandValue()) {
 			if(player.getCardCount() == 2 && player.getHandValue() == 21) {
 				// ブラックジャック
-				return 3;
+				return ResultCode.BLACKJACK.getResultCode();
 			}
-			return 1;
+			return ResultCode.PLAYERWIN.getResultCode();
 		}else if(player.getHandValue() < dealer.getHandValue()) {
 			// 点数で比べる
-			return 0;
+			return ResultCode.PLAYERLOSE.getResultCode();
 		}else {
 			// 引き分け
-			return 2;
+			return ResultCode.PLAYERDRAW.getResultCode();
 		}
 	}
 	

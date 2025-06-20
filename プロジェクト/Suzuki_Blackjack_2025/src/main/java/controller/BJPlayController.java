@@ -56,9 +56,12 @@ public class BJPlayController extends HttpServlet {
 			// 戦績をDBに記録
 			UserAccountDTO loginUser = (UserAccountDTO) userObj;
 			AccountService as = new AccountService();
+			// System.out.println("loginUser.getUserChip()"+loginUser.getUserChip());
+			// System.out.println("table.getWin(table.doJudge()) : " + table.getWin(table.doJudge()));
+			
 			as.updateStatsAndResult(new Result(loginUser.getUserId(), table.doJudge(), loginUser.getUserChip() + table.getWin(table.doJudge())));
-			System.out.println("loginUser.getUserChip()"+loginUser.getUserChip());
-			System.out.println("table.getWin(table.doJudge()) : " + table.getWin(table.doJudge()));
+			// System.out.println("loginUser.getUserChip()"+loginUser.getUserChip());
+			// System.out.println("table.getWin(table.doJudge()) : " + table.getWin(table.doJudge()));
 			// sessionを更新
 			session.setAttribute("loginUser", as.getUserById(loginUser.getUserId()));
 			

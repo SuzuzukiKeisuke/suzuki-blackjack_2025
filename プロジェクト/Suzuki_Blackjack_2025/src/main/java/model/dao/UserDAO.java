@@ -160,10 +160,11 @@ public class UserDAO {
 		return num;
 	}
 	
-	// idを参照してアカウント名を変更する
+	// idを参照してチップ数を変更する
 		public int updateChipById(int userId, int userChip) {
 			int num = 0;
 			System.out.println("DB接続@UserDAO/updateChipById");
+			// System.out.println("userId, userChip " + userId +" "+ userChip);
 			try {
 				con = DatabaseUtil.getConnection();
 				String sql = "UPDATE users SET user_chip = ? WHERE user_id = ?";
@@ -214,16 +215,16 @@ public class UserDAO {
 			String sql = "";
 			switch (result.getResultCode()) {
 			case 0:
-				sql = "UPDATE users SET user_losecount = user_losecount + 1, user_chip = user_chip + ? WHERE user_id = ?";
+				sql = "UPDATE users SET user_losecount = user_losecount + 1, user_chip = ? WHERE user_id = ?";
 				break;
 			case 1:
-				sql = "UPDATE users SET user_wincount = user_wincount + 1, user_chip = user_chip + ? WHERE user_id = ?";
+				sql = "UPDATE users SET user_wincount = user_wincount + 1, user_chip = ? WHERE user_id = ?";
 				break;
 			case 2:
-				sql = "UPDATE users SET user_drawcount = user_drawcount + 1, user_chip = user_chip + ? WHERE user_id = ?";
+				sql = "UPDATE users SET user_drawcount = user_drawcount + 1, user_chip = ? WHERE user_id = ?";
 				break;
 			case 3:
-				sql = "UPDATE users SET user_bjcount = user_bjcount + 1, user_chip = user_chip + ? WHERE user_id = ?";
+				sql = "UPDATE users SET user_bjcount = user_bjcount + 1, user_chip = ? WHERE user_id = ?";
 				break;
 			default:
 				System.out.println("UserDAO/result/resultCodeエラー 0~3以外の数値 -> " + result.getResultCode());
@@ -242,34 +243,7 @@ public class UserDAO {
 		return num;
 	}
 
-//	// 勝率トップ5を取得する(旧版)
-//	public List<UserStats> getUserStatsList() {
-//		UserStats userstats = null;
-//		List<UserStats> userStatsList = new ArrayList<UserStats>();
-//		System.out.println("DB接続@UserDAO/getUserStatsList");
-//		try {
-//			con = DatabaseUtil.getConnection();
-//			String sql = "SELECT *, user_wincount / IFNULL((user_wincount + user_losecount + user_drawcount), 0) AS ratio FROM users ORDER BY ratio DESC LIMIT 5";
-//			ps = con.prepareStatement(sql);
-//			rs = ps.executeQuery();
-//			while (rs.next()) {
-//				userstats = new UserStats();
-//				userstats.setUserId(rs.getInt("user_id"));
-//				userstats.setUserName(rs.getString("user_name"));
-//				userstats.setWinCount(rs.getInt("user_wincount"));
-//				userstats.setLoseCount(rs.getInt("user_losecount"));
-//				userstats.setDrawCount(rs.getInt("user_drawcount"));
-//				userStatsList.add(userstats);
-//			}
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		} finally {
-//			DatabaseUtil.close(rs, ps, con);
-//			System.out.println("DB切断@UserDAO/getUserStatsList");
-//		}
-//		return userStatsList;
-//	}
-	
+
 	// チップ所持数トップ5を取得する
 	public List<UserStats> getUserChipRanking() {
 		UserStats userStats = null;

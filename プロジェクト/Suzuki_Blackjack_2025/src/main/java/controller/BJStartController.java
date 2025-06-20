@@ -38,6 +38,8 @@ public class BJStartController extends HttpServlet {
 				
 				// bet後のチップの動き
 				as.updateChipById(loginUser.getUserId(), loginUser.getUserChip()-bet);
+//				System.out.println("loginUser.getUserChip()" +  loginUser.getUserChip());
+//				System.out.println("bet" + bet);
 				session.setAttribute("loginUser", as.getUserById(loginUser.getUserId()));
 				request.setAttribute("table", table);	// 画面に送る用		
 				session.setAttribute("table", table);	// 盤面記録用
