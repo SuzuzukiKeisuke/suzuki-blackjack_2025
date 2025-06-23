@@ -21,20 +21,24 @@
 	    return;
 	}
 	%>
-	<header class="d-flex justify-content-end align-items-end me-3">
-		<form action="MainMenuController" method="get" align="right"class="me-3">
-			<input type="submit" value="ログアウト" class="btn btn-outline-light btn-sm" />
-		</form>
-		<div class="me-3"><%=loginUser.getUserName()%></div>
+	<header class="d-flex justify-content-between align-items-end mb-3">
+		<div class="fw-bold ms-3">所持チップ <%=loginUser.getUserChip()%>枚</div>
+		<div class="fw-bold fs-3">メインメニュー</div>
+		<div class="d-flex align-items-end me-3">
+			<form action="MainMenuController" method="get" align="right"class="me-3">
+				<input type="submit" value="ログアウト" class="btn btn-outline-light btn-sm" />
+			</form>
+			<div><%=loginUser.getUserName()%></div>
+		</div>
+		
 	</header>
 	<hr>
 
 	<img src="img/BLACKJACK_cropped.png" class="titleimage">
-	<div
-		class="d-flex flex-column justify-content-center align-items-center">
-		<div class="mb-3 fw-bold">所持チップ <%=loginUser.getUserChip()%>枚</div>
+	<div class="d-flex flex-column justify-content-center align-items-center">
+		
 		<form action="BJBetController" method="post"
-			class="play-start-button">
+			class="play-start-button my-3">
 			<input type="submit" value="ブラックジャックをプレイ" class="btn btn-primary">
 		</form>
 		<form action="MainMenuController" method="post">

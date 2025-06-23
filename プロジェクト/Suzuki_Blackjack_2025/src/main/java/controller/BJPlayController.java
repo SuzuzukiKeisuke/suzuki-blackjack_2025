@@ -67,6 +67,7 @@ public class BJPlayController extends HttpServlet {
 			
 			// jspに情報を送る
 			request.setAttribute("resultcode", table.doJudge());
+			request.setAttribute("winchip", table.getWin(table.doJudge()));
 			rd = request.getRequestDispatcher("blackjack-result.jsp");
 
 		} else if (table.doHit(table.getPlayer())) {// バーストしている場合
@@ -85,6 +86,7 @@ public class BJPlayController extends HttpServlet {
 			// jspに情報を送る
 			
 			request.setAttribute("resultcode", table.doJudge());
+			request.setAttribute("winchip", table.getWin(table.doJudge()));
 			rd = request.getRequestDispatcher("blackjack-result.jsp");
 
 		} else {// バーストしてない場合

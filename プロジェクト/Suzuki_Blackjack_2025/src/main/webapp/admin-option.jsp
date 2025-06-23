@@ -16,19 +16,23 @@
 	<%
 	UserAccountDTO loginUser = (UserAccountDTO) session.getAttribute("loginUser");
 	UserAccountDTO user = (UserAccountDTO) request.getAttribute("user");
+	if (loginUser == null) {
+	    response.sendRedirect("login.jsp");
+	    return;
+	}
 	%>
-	<header class="d-flex justify-content-end me-3">
-		<form action="MainMenuController" method="get" align="right"
-			class="me-3">
-			<input type="submit" value="ログアウト"
-				class="btn btn-outline-light btn-sm" />
-		</form>
-		<%=loginUser.getUserName()%>
+	<header class="d-flex justify-content-between align-items-end mb-3">
+		<div class="fw-bold ms-3">所持チップ <%=loginUser.getUserChip()%>枚</div>
+		<div class="fw-bold fs-3">管理者画面-アカウント設定</div>
+		<div class="d-flex align-items-end me-3">
+			<form action="MainMenuController" method="get" align="right"class="me-3">
+				<input type="submit" value="ログアウト" class="btn btn-outline-light btn-sm" />
+			</form>
+			<div><%=loginUser.getUserName()%></div>
+		</div>
+		
 	</header>
-
 	<hr>
-	<h1 align="center" class="mb-3">管理者 - アカウント設定</h1>
-
 	<div class="d-flex flex-column align-items-center">
 		<form action="AdminSettingController" method="post">
 			<div class="d-flex flex-column align-items-center">

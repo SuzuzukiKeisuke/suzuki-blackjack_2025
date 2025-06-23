@@ -20,7 +20,14 @@ if(tableObj!=null){
 	table = (Table)tableObj;
 }else{
 	System.out.println("エラー！tableがblackjack-playingに正常に送られてきていない");
-	table = new Table();
+	response.sendRedirect("main-menu.jsp");
+	return;
+}
+
+Object chipObj = request.getAttribute("winchip");
+int winchip = -1;
+if(chipObj != null){
+	winchip = (int)chipObj;
 }
 
 PlayerBase player = table.getPlayer();
@@ -53,7 +60,7 @@ String[] links = {"img/spade.png","img/diamond.png","img/clover.png","img/heart.
 				resultCodeにエラーがあります resultCode=<%=resultCode %>
 			<% }%>
 		</h1>
-
+		<h2 class="text-center mb-3">チップを<%=winchip%>枚獲得</h2>
 		<!-- ディーラー -->
 		<h2 class="text-center">ディーラー : <%=dealer.getHandValue()%></h2>
 		<div class="d-flex justify-content-center gap-2 mb-4">

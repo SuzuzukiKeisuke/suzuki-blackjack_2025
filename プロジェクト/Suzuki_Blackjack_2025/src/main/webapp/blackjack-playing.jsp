@@ -12,7 +12,8 @@ if(obj!=null){
 	table = (Table)obj;
 }else{
 	System.out.println("エラー！tableがblackjack-playingに正常に送られてきていない");
-	table = new Table();
+	response.sendRedirect("main-menu.jsp");
+    return;
 }
 
 PlayerBase player = table.getPlayer();
@@ -80,6 +81,7 @@ String[] links = {"img/spade.png","img/diamond.png","img/clover.png","img/heart.
 
 		<!-- ボタン -->
 		<div class="text-center">
+			<p class="h4">ベット: <%=table.getBet()%>枚</p>
 			<form method="post" action="BJPlayController">
 			<input type="hidden" name="action" value="stand">
 				<button type="submit" name="stand" value="stand" class="btn btn-primary mb-1">スタンド</button>
