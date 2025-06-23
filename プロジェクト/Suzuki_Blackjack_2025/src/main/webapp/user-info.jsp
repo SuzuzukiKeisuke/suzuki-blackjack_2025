@@ -17,14 +17,21 @@
 <body class="m-3">
 	<%
 	UserAccountDTO loginUser = (UserAccountDTO) session.getAttribute("loginUser");
+	if (loginUser == null) {
+	    response.sendRedirect("login.jsp");
+	    return;
+	}
 	%>
-	<header class="d-flex justify-content-end me-3">
-		<form action="MainMenuController" method="get" align="right"
-			class="me-3">
-			<input type="submit" value="ログアウト"
-				class="btn btn-outline-light btn-sm" />
-		</form>
-		<%=loginUser.getUserName()%>
+	<header class="d-flex justify-content-between align-items-end mb-3">
+		<div class="fw-bold ms-3">所持チップ <%=loginUser.getUserChip()%>枚</div>
+		<div class="fw-bold fs-3">ユーザー情報</div>
+		<div class="d-flex align-items-end me-3">
+			<form action="MainMenuController" method="get" align="right"class="me-3">
+				<input type="submit" value="ログアウト" class="btn btn-outline-light btn-sm" />
+			</form>
+			<div><%=loginUser.getUserName()%></div>
+		</div>
+		
 	</header>
 	<hr>
 	<div class="row">
@@ -54,7 +61,7 @@
 						<th>勝ち</th>
 						<th>負け</th>
 						<th>引き分け</th>
-						<th>勝率</th>
+						<th>チップ</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -63,7 +70,7 @@
 						<td><%=userInfo.getWinCount()%></td>
 						<td><%=userInfo.getLoseCount()%></td>
 						<td><%=userInfo.getDrawCount()%></td>
-						<td class="bold-character"><%=String.format("%.2f", userInfo.getWinRate())%>%</td>
+						<td><%=userInfo.getChip()%></td>
 					</tr>
 				</tbody>
 			</table>
@@ -84,7 +91,7 @@
 					<tr>
 						<th>ランク</th>
 						<th>ユーザー名</th>
-						<th>勝率</th>
+						<th>チップ</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -96,7 +103,7 @@
 					<tr>
 						<td><%=i + 1%></td>
 						<td><%=uiDTO.getUserName()%></td>
-						<td><%=String.format("%.2f", uiDTO.getWinRate())%>%</td>
+						<td><%=uiDTO.getChip()%></td>
 					</tr>
 					<%
 					}

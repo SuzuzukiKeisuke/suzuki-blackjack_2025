@@ -3,20 +3,21 @@ package model.dto;
 public class UserInfoDTO {
 	private int userId;
 	private String userName;
+	private int bjCount;
 	private int winCount;
 	private int loseCount;
 	private int drawCount;
-	private float winRate;
+	private int chip;
 	
-	public UserInfoDTO(int userId, String userName, int winCount, int loseCount, int drawCount){
+	public UserInfoDTO(int userId, String userName, int bjCount, 
+			int winCount, int loseCount, int drawCount, int chip){
 		this.userId = userId;
 		this.userName = userName;
+		this.bjCount = bjCount;
 		this.winCount = winCount;
 		this.loseCount = loseCount;
 		this.drawCount = drawCount;
-		int total = winCount + loseCount + drawCount;
-		this.winRate = (total == 0 ? 0 : ((float)winCount / total * 100));
-		
+		this.chip = chip;
 	}
 
 	public int getUserId() {
@@ -35,6 +36,14 @@ public class UserInfoDTO {
 		this.userName = userName;
 	}
 
+	public int getBjCount() {
+		return bjCount;
+	}
+	
+	public void setBjCount(int bjCount) {
+		this.bjCount = bjCount;
+	}
+	
 	public int getWinCount() {
 		return winCount;
 	}
@@ -59,9 +68,12 @@ public class UserInfoDTO {
 		this.drawCount = drawCount;
 	}
 	
-	public float getWinRate() {
-		return winRate;
+	public int getChip() {
+		return chip;
 	}
 	
-	// setWinRate()はあえて作成しない
+	public void setChip(int chip) {
+		this.chip = chip;
+	}
+
 }

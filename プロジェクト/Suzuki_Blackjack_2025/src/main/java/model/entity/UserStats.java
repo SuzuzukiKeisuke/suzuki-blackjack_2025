@@ -3,16 +3,20 @@ package model.entity;
 public class UserStats {
 	private int userId;
 	private String userName;
+	private int bjCount;
 	private int winCount;
 	private int loseCount;
 	private int drawCount;
+	private int chip;
 	public UserStats() {}
-	public UserStats(int userId, String userName, int winCount, int loseCount, int drawCount) {
+	public UserStats(int userId, String userName, int bjCount, int winCount, int loseCount, int drawCount, int chip) {
 		this.userId = userId;
 		this.userName = userName;
+		this.bjCount = bjCount;
 		this.winCount = winCount;
 		this.loseCount = loseCount;
 		this.drawCount = drawCount;
+		this.chip = chip;
 	}
 	public int getUserId() {
 		return userId;
@@ -25,6 +29,12 @@ public class UserStats {
 	}
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+	public int getBjCount() {
+		return bjCount;
+	}
+	public void setBjCount(int bjCount) {
+		this.bjCount = bjCount;
 	}
 	public int getWinCount() {
 		return winCount;
@@ -43,5 +53,11 @@ public class UserStats {
 	}
 	public void setDrawCount(int drawCount) {
 		this.drawCount = drawCount;
+	}
+	public int getChip() {
+		return chip;
+	}
+	public void setChip(int chip) {
+		this.chip = chip;
 	}
 }

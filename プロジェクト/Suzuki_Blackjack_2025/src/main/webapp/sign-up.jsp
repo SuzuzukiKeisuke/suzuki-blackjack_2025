@@ -31,10 +31,10 @@
 			}
 %>
 			<form action="SignInController" method="post">
-				<label for=inputUserName>ユーザー名</label></br> 
-				<input type="text" id="inputUserName" name="userName" class="mb-3" required></br>
-				<labal for="inputUserPassword">パスワード</labal></br> 
-				<input type="password" id="inputPassword" name="userPassword" class="mb-3" required></br>
+				<label for=inputUserName class="form-label">ユーザー名</label></br> 
+				<input type="text" class="form-control" id="inputUserName" name="userName" class="mb-3" required></br>
+				<labal for="inputUserPassword" class="form-label">パスワード</labal></br> 
+				<input type="password" class="form-control" id="inputPassword" name="userPassword" class="mb-3" required></br>
 				<input type="submit" value="新規登録" class="btn btn-primary mb-3">
 			</form>
 			<a href="SignInController">ログイン画面に戻る</a>

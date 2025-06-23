@@ -14,7 +14,8 @@ public class UserConverter {
 						user.getUserId(),
 						user.getUserName(),
 //						user.getUserPassword(),
-						user.isUserIsAdmin());
+						user.isUserIsAdmin(),
+						user.getUserChip());
 	}
 	
 	
@@ -22,8 +23,10 @@ public class UserConverter {
 		return new UserInfoDTO(
 						stats.getUserId(),
 						stats.getUserName(),
+						stats.getBjCount(),
 						stats.getWinCount(),
 						stats.getLoseCount(),
-						stats.getDrawCount());
+						stats.getDrawCount(),
+						stats.getChip());
 	}
 }

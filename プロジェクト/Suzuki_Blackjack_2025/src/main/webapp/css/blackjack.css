@@ -1,6 +1,6 @@
 
 body {
-	background-color: rgb(45, 64, 46);
+	background-color: rgb(64, 91, 65);
 	color:white;
 	
 }
@@ -8,6 +8,19 @@ body {
 img{
 	width: 26px;
 	height: auto;
+}
+
+.kanban{
+	width: 30vw;
+	height: 30vh;
+	background: rgb(140, 89, 51);
+	border: 15px solid rgb(83, 50, 28);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size:large;
+	font-weight: 900;
 }
 
 .card {
@@ -33,3 +46,11 @@ img{
 	transform: rotate(180deg);
 }
 
+
+.titleimage { /*タイトル画像*/
+	width: 40vw;
+	max-width: 600px;
+	height: auto;
+	display: block;
+	margin: 20px auto;
+}

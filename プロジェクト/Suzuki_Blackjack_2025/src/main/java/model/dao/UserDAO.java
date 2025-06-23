@@ -29,12 +29,12 @@ public class UserDAO {
 			ps.setString(2, password);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				user = new User();
-				user.setUserId(rs.getInt("user_id"));
-				user.setUserName(rs.getString("user_name"));
-				//				user.setUserPassword(rs.getString("user_password"));
-				user.setUserIsAdmin(rs.getBoolean("user_isadmin"));
-			}
+				user = new User(
+				rs.getInt("user_id"),
+				rs.getString("user_name"),
+				rs.getBoolean("user_isadmin"),
+				rs.getInt("user_chip"));
+				}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -57,8 +57,8 @@ public class UserDAO {
 			while (rs.next()) {
 				user.setUserId(rs.getInt("user_id"));
 				user.setUserName(rs.getString("user_name"));
-				//					user.setUserPassword(rs.getString("user_password"));
 				user.setUserIsAdmin(rs.getBoolean("user_isadmin"));
+				user.setUserChip(rs.getInt("user_chip"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -159,6 +159,33 @@ public class UserDAO {
 		}
 		return num;
 	}
+	
+	// idを参照してチップ数を変更する
+		public int updateChipById(int userId, int userChip) {
+			int num = 0;
+			System.out.println("DB接続@UserDAO/updateChipById");
+			// System.out.println("userId, userChip " + userId +" "+ userChip);
+			try {
+				con = DatabaseUtil.getConnection();
+				String sql = "UPDATE users SET user_chip = ? WHERE user_id = ?";
+				ps = con.prepareStatement(sql);
+				ps.setInt(1, userChip);
+				ps.setInt(2, userId);
+				num = ps.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				DatabaseUtil.close(rs, ps, con);
+				System.out.println("DB切断@UserDAO/updateChipById");
+			}
+			return num;
+		}
+	
+	
+	
+	
+	
+	
 
 	// idを参照してアカウントを削除する
 	public int deleteUserById(int userId) {
@@ -188,20 +215,24 @@ public class UserDAO {
 			String sql = "";
 			switch (result.getResultCode()) {
 			case 0:
-				sql = "UPDATE users SET user_losecount = user_losecount + 1 WHERE user_id = ?";
+				sql = "UPDATE users SET user_losecount = user_losecount + 1, user_chip = ? WHERE user_id = ?";
 				break;
 			case 1:
-				sql = "UPDATE users SET user_wincount = user_wincount + 1 WHERE user_id = ?";
+				sql = "UPDATE users SET user_wincount = user_wincount + 1, user_chip = ? WHERE user_id = ?";
 				break;
 			case 2:
-				sql = "UPDATE users SET user_drawcount = user_drawcount + 1 WHERE user_id = ?";
+				sql = "UPDATE users SET user_drawcount = user_drawcount + 1, user_chip = ? WHERE user_id = ?";
+				break;
+			case 3:
+				sql = "UPDATE users SET user_bjcount = user_bjcount + 1, user_chip = ? WHERE user_id = ?";
 				break;
 			default:
-				System.out.println("UserDAO/result/resultCodeエラー 0~2以外の数値 -> " + result.getResultCode());
+				System.out.println("UserDAO/result/resultCodeエラー 0~3以外の数値 -> " + result.getResultCode());
 				return 0;
 			}
 			ps = con.prepareStatement(sql);
-			ps.setInt(1, result.getUserId());
+			ps.setInt(1, result.getResultWin());
+			ps.setInt(2, result.getUserId());
 			num = ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -212,24 +243,27 @@ public class UserDAO {
 		return num;
 	}
 
-	// 勝率トップ5を取得する
-	public List<UserStats> getUserStatsList() {
-		UserStats userstats = null;
+
+	// チップ所持数トップ5を取得する
+	public List<UserStats> getUserChipRanking() {
+		UserStats userStats = null;
 		List<UserStats> userStatsList = new ArrayList<UserStats>();
 		System.out.println("DB接続@UserDAO/getUserStatsList");
 		try {
 			con = DatabaseUtil.getConnection();
-			String sql = "SELECT *, user_wincount / IFNULL((user_wincount + user_losecount + user_drawcount), 0) AS ratio FROM users ORDER BY ratio DESC LIMIT 5";
+			String sql = "SELECT * FROM users ORDER BY user_chip DESC LIMIT 5";
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				userstats = new UserStats();
-				userstats.setUserId(rs.getInt("user_id"));
-				userstats.setUserName(rs.getString("user_name"));
-				userstats.setWinCount(rs.getInt("user_wincount"));
-				userstats.setLoseCount(rs.getInt("user_losecount"));
-				userstats.setDrawCount(rs.getInt("user_drawcount"));
-				userStatsList.add(userstats);
+				userStats = new UserStats();
+				userStats.setUserId(rs.getInt("user_id"));
+				userStats.setUserName(rs.getString("user_name"));
+				userStats.setWinCount(rs.getInt("user_wincount"));
+				userStats.setLoseCount(rs.getInt("user_losecount"));
+				userStats.setDrawCount(rs.getInt("user_drawcount"));
+				userStats.setBjCount(rs.getInt("user_bjcount"));
+				userStats.setChip(rs.getInt("user_chip"));
+				userStatsList.add(userStats);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -257,6 +291,8 @@ public class UserDAO {
 				userStats.setWinCount(rs.getInt("user_wincount"));
 				userStats.setLoseCount(rs.getInt("user_losecount"));
 				userStats.setDrawCount(rs.getInt("user_drawcount"));
+				userStats.setBjCount(rs.getInt("user_bjcount"));
+				userStats.setChip(rs.getInt("user_chip"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -58,5 +58,10 @@ public class AccountService {
 		num = uDAO.updateUserStatsById(result);
 		System.out.println(num+"件処理しました");
 	}
+	
+	public void updateChipById(int userId, int userChip) {
+		int num = uDAO.updateChipById(userId, userChip);
+		System.out.println(num + "件処理しました");
+	}
 
 }

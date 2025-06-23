@@ -11,6 +11,8 @@ import util.UserConverter;
 
 public class UserRankingService {
 	UserDAO uDAO = new UserDAO();
+	
+	// ユーザ一人分のデータを取得
 	public UserInfoDTO getUserInfo(int userId) {
 		
 		// dbアクセス
@@ -28,7 +30,7 @@ public class UserRankingService {
 	
 	
 	
-	
+	// 勝率上位五人のリストを取得
 	public List<UserInfoDTO> getUserRanking(){
 		// usersテーブルのDAO
 		
@@ -37,7 +39,7 @@ public class UserRankingService {
 		List<UserInfoDTO> userInfoList = new ArrayList<UserInfoDTO>();
 		
 		// 勝率トップ5を取得する
-		List<UserStats> userStatsList = uDAO.getUserStatsList();
+		List<UserStats> userStatsList = uDAO.getUserChipRanking();
 		
 		// データの移し替え
 		userStatsList.forEach(stats -> userInfoList.add(UserConverter.toUserInfoDTO(stats)));

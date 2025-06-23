@@ -3,27 +3,21 @@ package model.dto;
 public class UserAccountDTO {
 	private int userId;
 	private String userName;
-	// private String userPassword;
 	private boolean userIsAdmin;
+	private int userChip;
 	
-	public UserAccountDTO(int userId, String userName, boolean userIsAdmin) {
+	public UserAccountDTO(int userId, String userName, boolean userIsAdmin, int userChip) {
 		this.userId = userId;
 		this.userName = userName;
-//		this.userPassword = userPassword;
 		this.userIsAdmin = userIsAdmin;
-	}
+		this.userChip = userChip;
+		}
 	public String getUserName() {
 		return userName;
 	}
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-//	public String getUserPassword() {
-//		return userPassword;
-//	}
-//	public void setUserPassword(String userPassword) {
-//		this.userPassword = userPassword;
-//	}
 	public boolean isUserIsAdmin() {
 		return userIsAdmin;
 	}
@@ -44,5 +38,11 @@ public class UserAccountDTO {
 		this.userId = userId;
 	}
 	
+	public int getUserChip() {
+		return userChip;
+	}
 	
+	public void setUserChip(int userChip) {
+		this.userChip = userChip;
+	}
 }
