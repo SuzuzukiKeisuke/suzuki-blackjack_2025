@@ -85,7 +85,7 @@
 		<div class="col-6">
 			<!--XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
 			<!--右側の要素-->
-			<h2>勝率ランキング</h2>
+			<h2>所持チップランキング</h2>
 			<table class="table-list">
 				<thead>
 					<tr>
