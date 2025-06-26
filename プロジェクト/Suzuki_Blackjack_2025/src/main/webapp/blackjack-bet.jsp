@@ -47,7 +47,7 @@
 		<label for="inputBet"><h2>何枚賭けますか？</h2></label>
 		<div class="d-flex flex-row align-items-end mb-5">
 			<input type="hidden" name="action" value="bet">
-			<input type="number" id="inputBet" name="betNum" min="1" max="10"/>枚
+			<input type="number" id="inputBet" name="betNum" min="1" max="10" required/>枚
 			<input type="submit" class="btn btn-primary ms-1" value="決定">
 		</div>
 	</div>
