@@ -114,9 +114,9 @@ public class UserDAO {
 		}
 
 		return !flag;
-		// 以下を反転して返す
-		// true -> このuser_nameを使用しているレコードが存在する 
-		// false -> このuser_nameはまだ使用されていない
+		// 以下が返る
+		//  false-> このuser_nameを使用しているレコードが存在する 
+		// true -> このuser_nameはまだ使用されていない
 	}
 
 	// user_nameとuser_passwordからusersにレコードを作成

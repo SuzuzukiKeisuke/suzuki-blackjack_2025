@@ -18,6 +18,7 @@ import service.UserRankingService;
 public class UserSettingController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	// ユーザー情報画面へ戻る
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// ログイン中のユーザー情報を得る
 		HttpSession session = request.getSession();
@@ -37,6 +38,8 @@ public class UserSettingController extends HttpServlet {
 
 	}
 
+	
+	// ユーザー設定処理
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String dowhat = request.getParameter("dowhat");
 		// ログイン中のユーザー情報を得る
@@ -58,7 +61,7 @@ public class UserSettingController extends HttpServlet {
 				RequestDispatcher rd1 = request.getRequestDispatcher("user-setting.jsp");
 				rd1.forward(request, response);
 			}else {
-				request.setAttribute("message", "ユーザー認証に失敗しました");
+				request.setAttribute("message", "ユーザー名更新に失敗しました");
 				RequestDispatcher rd2 = request.getRequestDispatcher("user-setting.jsp");
 				rd2.forward(request, response);
 			}
