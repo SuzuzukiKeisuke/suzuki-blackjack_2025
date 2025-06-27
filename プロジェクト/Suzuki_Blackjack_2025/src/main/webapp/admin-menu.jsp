@@ -47,7 +47,7 @@
 
 	if (sobj != null) {
 	%>
-	<p><%=(String) sobj%></p>
+	<p class="text-center"><%=(String) sobj%></p>
 	<%
 	}
 	%>

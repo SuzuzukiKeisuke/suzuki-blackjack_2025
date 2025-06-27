@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.dto.UserAccountDTO;
 import service.AccountService;
 import service.UserRankingService;
 
@@ -27,9 +28,13 @@ public class AdminSettingController extends HttpServlet {
 			String userPassward = request.getParameter("userPassword");
 			String newUserName = request.getParameter("newUserName");
 			// 新しいユーザ入力情報を更新
-			as.changeUserName(userName, userPassward, newUserName);
-			// 画面の更新
-			request.setAttribute("message", "アカウント名を更新しました");
+			UserAccountDTO user = as.changeUserName(userName, userPassward, newUserName);
+			if(user != null) {
+				// 画面の更新
+				request.setAttribute("message", "アカウント名を更新しました");
+			}else {
+				request.setAttribute("message", "ユーザー名更新に失敗しました");
+			}
 
 		}
 
