@@ -1,0 +1,8 @@
+{
+  "name": "Blackjack App Container",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "web",
+  "workspaceFolder": "/workspace",
+  "forwardPorts": [3306, 8080],
+  "postCreateCommand": "echo 'Codespace ready'"
+}

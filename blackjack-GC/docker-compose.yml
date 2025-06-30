@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  db:
+    image: mariadb:10.4
+    container_name: blackjack-db
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: blackjack
+      MYSQL_USER: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./sql/:/docker-entrypoint-initdb.d/
